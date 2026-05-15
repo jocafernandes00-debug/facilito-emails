@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Papel Timbrado — Facilito</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      width: 210mm;
+    }
+
+    .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; break-after: page; page-break-after: always; }
+
+    .header {
+      background-color: #061685;
+      display: flex;
+      flex-direction: column;
+    }
+    .header-bar { display: flex; height: 6px; }
+    .header-bar-yellow { background: #F9CE62; }
+    .header-bar-blue   { background: #3662FF; }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px 18px 28px;
+    }
+    .header-logo img { height: 36px; display: block; }
+    .header-info { text-align: right; }
+    .header-info p { color: rgba(255,255,255,0.55); font-size: 9pt; line-height: 1.6; }
+    .header-info a { color: #F9CE62; text-decoration: none; font-weight: 700; }
+    .header-accent { height: 4px; background: #3662FF; }
+
+    .content { padding: 18mm 28mm 14mm 28mm; }
+
+    .doc-meta {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 10mm;
+      padding-bottom: 6mm;
+      border-bottom: 1.5px solid #EBEBEB;
+    }
+    .doc-title {
+      font-size: 11pt;
+      font-weight: 900;
+      color: #061685;
+      letter-spacing: -0.3px;
+      margin-bottom: 3px;
+    }
+    .doc-subtitle { font-size: 9pt; color: #9CA3AF; }
+    .doc-date { font-size: 9pt; color: #9CA3AF; text-align: right; }
+
+    .text-area { min-height: 160mm; }
+    .text-area p {
+      font-size: 10.5pt;
+      color: #374151;
+      line-height: 1.85;
+      margin-bottom: 12px;
+    }
+    .text-area .salutation {
+      font-size: 10.5pt;
+      color: #374151;
+      margin-bottom: 16px;
+    }
+
+    .signature-area {
+      margin-top: 16mm;
+      padding-top: 6mm;
+      border-top: 1px solid #EBEBEB;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .sig-block { min-width: 60mm; }
+    .sig-line { border-top: 1.5px solid #374151; margin-bottom: 4px; width: 56mm; }
+    .sig-name { font-size: 9.5pt; font-weight: 700; color: #061685; }
+    .sig-role { font-size: 8.5pt; color: #9CA3AF; }
+    .sig-logo img { height: 22px; opacity: 0.4; }
+
+    .footer-wrap { position: absolute; bottom: 0; left: 0; right: 0; background-color: #061685; }
+    .footer-bar { height: 4px; display: flex; }
+    .footer-bar-blue   { background: #3662FF; }
+    .footer-bar-yellow { background: #F9CE62; }
+    .footer {
+      padding: 10px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer p { color: rgba(255,255,255,0.35); font-size: 7.5pt; line-height: 1.5; }
+    .footer-divider { color: rgba(255,255,255,0.15); margin: 0 6px; }
+
+    .page-num {
+      position: absolute;
+      bottom: 20mm;
+      right: 14mm;
+      font-size: 8pt;
+      color: #D1D5DB;
+    }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page { page-break-after: always; }
+      .page:last-child { page-break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="header">
+    <div class="header-bar">
+      <div class="header-bar-yellow"></div>
+      <div class="header-bar-blue"></div>
+    </div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFFFFF;font-size:20pt;font-weight:900;letter-spacing:-0.5px;">facilito</span>
+      </div>
+      <div class="header-info">
+        <p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p>
+      </div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+
+  <main class="content">
+
+    <div class="doc-meta">
+      <div>
+        <p class="doc-title">TÍTULO DO DOCUMENTO</p>
+        <p class="doc-subtitle">Subtítulo ou referência interna</p>
+      </div>
+      <div class="doc-date">
+        <p>Data: ___/___/______</p>
+        <p style="margin-top:3px;">Ref.: #0001</p>
+      </div>
+    </div>
+
+    <div class="text-area">
+      <p class="salutation">Prezado(a),</p>
+      <p>
+        Conteúdo do documento aqui.
+      </p>
+      <p>
+        Atenciosamente,
+      </p>
+    </div>
+
+    <div class="signature-area">
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <p class="sig-name">Joaquim Fernandes</p>
+        <p class="sig-role">Fundador &nbsp;|&nbsp; Facilito</p>
+      </div>
+      <div class="sig-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" style="filter:invert(1);opacity:0.3;">
+      </div>
+    </div>
+
+  </main>
+
+  <span class="page-num">1</span>
+
+  <footer class="footer-wrap">
+    <div class="footer-bar">
+      <div class="footer-bar-blue"></div>
+      <div class="footer-bar-yellow"></div>
+    </div>
+    <div class="footer">
+      <p>Facilito &nbsp;<span class="footer-divider">|</span>&nbsp; Ecossistema digital de soluções do dia a dia</p>
+      <p>buscar.facilitoapp.com.br</p>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

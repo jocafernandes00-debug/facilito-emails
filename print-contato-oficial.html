@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Contato Oficial — Facilito</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #fff; width: 210mm; }
+
+    .page { width: 210mm; height: 297mm; position: relative; overflow: hidden; break-after: page; page-break-after: always; }
+
+    .header { background-color: #061685; display: flex; flex-direction: column; }
+    .header-bar { display: flex; height: 6px; }
+    .header-bar-yellow { background: #F9CE62; }
+    .header-bar-blue   { background: #3662FF; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px 18px 28px; }
+    .header-logo img { height: 36px; display: block; }
+    .header-info { text-align: right; }
+    .header-info p { color: rgba(255,255,255,0.55); font-size: 9pt; line-height: 1.6; }
+    .header-info a { color: #F9CE62; text-decoration: none; font-weight: 700; }
+    .header-accent { height: 4px; background: #3662FF; }
+
+    .content { padding: 18mm 28mm 14mm 28mm; }
+
+    .doc-meta { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 10mm; padding-bottom: 6mm; border-bottom: 1.5px solid #EBEBEB; }
+    .doc-title { font-size: 11pt; font-weight: 900; color: #061685; letter-spacing: -0.3px; margin-bottom: 3px; }
+    .doc-subtitle { font-size: 9pt; color: #9CA3AF; }
+    .doc-date { font-size: 9pt; color: #9CA3AF; text-align: right; }
+
+    .section-title { font-size: 13pt; font-weight: 900; color: #061685; letter-spacing: -0.3px; margin-top: 7mm; margin-bottom: 3mm; }
+    .section-title:first-child { margin-top: 0; }
+    .subsection-title { font-size: 10pt; font-weight: 700; color: #061685; margin-top: 4mm; margin-bottom: 2mm; }
+    .body-text { font-size: 10pt; color: #374151; line-height: 1.8; margin-bottom: 3mm; }
+    .highlight { font-size: 10.5pt; color: #3662FF; margin-bottom: 3mm; }
+    .body-list { margin: 0 0 3mm 5mm; padding: 0; list-style: none; }
+    .body-list li { font-size: 10pt; color: #374151; line-height: 1.8; padding-left: 12px; position: relative; }
+    .body-list li::before { content: "•"; position: absolute; left: 0; color: #3662FF; font-weight: 700; }
+    .divider { height: 1px; background: #EBEBEB; margin: 5mm 0; }
+
+    .signature-area { margin-top: 12mm; padding-top: 6mm; border-top: 1px solid #EBEBEB; display: flex; align-items: flex-end; justify-content: space-between; }
+    .sig-block { min-width: 60mm; }
+    .sig-line { border-top: 1.5px solid #374151; margin-bottom: 4px; width: 56mm; }
+    .sig-name { font-size: 9.5pt; font-weight: 700; color: #061685; }
+    .sig-role { font-size: 8.5pt; color: #9CA3AF; }
+    .sig-logo img { height: 22px; opacity: 0.4; }
+
+    .footer-wrap { position: absolute; bottom: 0; left: 0; right: 0; background-color: #061685; }
+    .footer-bar { height: 4px; display: flex; }
+    .footer-bar-blue   { background: #3662FF; }
+    .footer-bar-yellow { background: #F9CE62; }
+    .footer { padding: 10px 28px; display: flex; align-items: center; justify-content: space-between; }
+    .footer p { color: rgba(255,255,255,0.35); font-size: 7.5pt; line-height: 1.5; }
+    .footer-divider { color: rgba(255,255,255,0.15); margin: 0 6px; }
+    .page-num { position: absolute; bottom: 20mm; right: 14mm; font-size: 8pt; color: #D1D5DB; }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="header-bar">
+      <div class="header-bar-yellow"></div>
+      <div class="header-bar-blue"></div>
+    </div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFFFFF;font-size:20pt;font-weight:900;letter-spacing:-0.5px;">facilito</span>
+      </div>
+      <div class="header-info">
+        <p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p>
+      </div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+
+  <main class="content">
+    <div class="doc-meta">
+      <div>
+        <p class="doc-title">CONTATO OFICIAL</p>
+        <p class="doc-subtitle">Documento Institucional — Facilito</p>
+      </div>
+      <div class="doc-date">
+        <p>Data: 22/04/2026</p>
+        <p style="margin-top:3px;">Ref.: #0002</p>
+      </div>
+    </div>
+
+    <p class="body-text">O Facilito mantém canais oficiais de comunicação para garantir transparência, organização e atendimento adequado a usuários, parceiros e interessados.</p>
+    <p class="body-text">Este canal deve ser utilizado para dúvidas, solicitações de suporte, comunicações institucionais, questões técnicas, assuntos jurídicos, parcerias comerciais e demais demandas relacionadas à Plataforma.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Canal de Atendimento</p>
+
+    <p class="subsection-title">E-mail oficial de suporte:</p>
+    <p class="highlight">suporte@facilitoapp.com.br</p>
+
+    <p class="subsection-title">Telefone / WhatsApp:</p>
+    <p class="body-text">+55 (77) 99926-6525</p>
+
+    <p class="body-text" style="margin-top:3mm;">Todas as solicitações enviadas pelos canais oficiais serão analisadas pela equipe responsável e respondidas dentro de um prazo razoável, conforme a complexidade da demanda.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Diretrizes de Comunicação</p>
+    <p class="body-text">Para um atendimento mais eficiente, recomenda-se que o usuário informe no e-mail:</p>
+    <ul class="body-list">
+      <li>Nome completo ou razão social</li>
+      <li>E-mail cadastrado na Plataforma (se aplicável)</li>
+      <li>Descrição clara do assunto</li>
+      <li>Informações ou documentos que auxiliem na análise da solicitação</li>
+    </ul>
+    <p class="body-text">O Facilito preza por uma comunicação clara, respeitosa e objetiva, reservando-se o direito de não responder mensagens ofensivas, fraudulentas ou que violem a legislação vigente.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Uso Institucional</p>
+    <p class="body-text">Este canal também poderá ser utilizado para:</p>
+    <ul class="body-list">
+      <li>Contatos comerciais e propostas de parceria</li>
+      <li>Solicitações formais</li>
+      <li>Comunicações relacionadas a conformidade legal e regulatória</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Redes Sociais Oficiais</p>
+    <p class="body-text">O Facilito mantém presença nas redes sociais para comunicação institucional, divulgação de novidades e relacionamento com a comunidade:</p>
+    <ul class="body-list">
+      <li>Instagram: <strong>@appfacilito</strong></li>
+    </ul>
+    <p class="body-text" style="margin-top:2mm;">As redes sociais têm caráter informativo. Para suporte técnico, solicitações formais ou assuntos sensíveis, utilize sempre os canais oficiais de atendimento.</p>
+
+    <div class="signature-area">
+      <div class="sig-block">
+        <div class="sig-line"></div>
+        <p class="sig-name">Joaquim Fernandes</p>
+        <p class="sig-role">Fundador &nbsp;|&nbsp; Facilito</p>
+      </div>
+      <div class="sig-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" style="filter:invert(1);opacity:0.3;">
+      </div>
+    </div>
+  </main>
+
+  <span class="page-num">1</span>
+
+  <footer class="footer-wrap">
+    <div class="footer-bar">
+      <div class="footer-bar-blue"></div>
+      <div class="footer-bar-yellow"></div>
+    </div>
+    <div class="footer">
+      <p>Facilito &nbsp;<span class="footer-divider">|</span>&nbsp; Ecossistema digital de soluções do dia a dia</p>
+      <p>buscar.facilitoapp.com.br</p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

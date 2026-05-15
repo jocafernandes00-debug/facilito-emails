@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facilito — Disparos de Email</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #060D28;
+      color: #E8EDF8;
+      font-family: Arial, Helvetica, sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    header {
+      background: #061685;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #F9CE62;
+    }
+    header .logo {
+      font-size: 22px;
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    header .logo span { color: #F9CE62; }
+    header .subtitle {
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── Layout ── */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: #0C1535;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header {
+      padding: 22px 24px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.5;
+    }
+
+    .preview-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 6px 14px;
+      border-radius: 50px;
+      transition: all 0.15s;
+    }
+    .preview-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+
+    .card-body { padding: 20px 24px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
+
+    /* ── Email input ── */
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 8px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 110px;
+      background: #060D28;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: #E8EDF8;
+      font-size: 13px;
+      font-family: monospace;
+      padding: 12px;
+      resize: vertical;
+      outline: none;
+      line-height: 1.6;
+      transition: border-color 0.15s;
+    }
+    textarea:focus { border-color: rgba(54,98,255,0.6); }
+    textarea::placeholder { color: rgba(255,255,255,0.2); }
+
+    /* ── Upload ── */
+    .upload-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .upload-btn {
+      flex-shrink: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px dashed rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.55);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 9px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .upload-btn:hover { background: rgba(255,255,255,0.09); color: #fff; }
+
+    .file-info {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+    .file-info.loaded { color: #22c55e; font-weight: 700; }
+
+    .email-count {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      text-align: right;
+    }
+    .email-count span { color: #F9CE62; font-weight: 800; }
+
+    /* ── Send button ── */
+    .send-btn {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 900;
+      color: #061685;
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .send-btn:hover:not(:disabled) { opacity: 0.88; }
+    .send-btn:active:not(:disabled) { transform: scale(0.98); }
+    .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── Progress ── */
+    .progress-wrap {
+      display: none;
+    }
+    .progress-wrap.active { display: block; }
+
+    .progress-bar-bg {
+      background: rgba(255,255,255,0.07);
+      border-radius: 50px;
+      height: 6px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 50px;
+      transition: width 0.3s;
+      width: 0%;
+    }
+
+    .progress-text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+    }
+    .progress-text .ok { color: #22c55e; font-weight: 700; }
+    .progress-text .fail { color: #ef4444; font-weight: 700; }
+
+    /* ── Result ── */
+    .result {
+      display: none;
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .result.success { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+    .result.error   { background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+    .result.partial { background: rgba(249,206,98,0.1); color: #F9CE62; border: 1px solid rgba(249,206,98,0.2); }
+
+    /* ── Clear btn ── */
+    .clear-btn {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.25);
+      font-size: 11px;
+      cursor: pointer;
+      padding: 0;
+      text-decoration: underline;
+    }
+    .clear-btn:hover { color: rgba(255,255,255,0.55); }
+
+    input[type="file"] { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">facilito<span>.</span></div>
+    <div class="subtitle">Plataforma de Disparos</div>
+  </div>
+  <div style="font-size:12px;color:rgba(255,255,255,0.3);">joaquim@facilitoapp.com.br</div>
+</header>
+
+<main>
+  <div class="grid" id="grid">
+    <div style="color:rgba(255,255,255,0.3);font-size:14px;">Carregando templates...</div>
+  </div>
+</main>
+
+<script>
+  // ── Estado por template ────────────────────────────────────────────────
+  const state = {};
+
+  // ── Helpers ───────────────────────────────────────────────────────────
+  function parseEmailsFromText(text) {
+    const re = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/g;
+    return [...new Set((text.match(re) || []).map(e => e.toLowerCase()))];
+  }
+
+  function updateCount(id) {
+    const s = state[id];
+    const el = document.getElementById(`count-${id}`);
+    if (el) el.innerHTML = `<span>${s.emails.length}</span> email${s.emails.length !== 1 ? 's' : ''} na lista`;
+  }
+
+  // ── Render cards ──────────────────────────────────────────────────────
+  async function loadTemplates() {
+    const res  = await fetch('/templates');
+    const list = await res.json();
+    const grid = document.getElementById('grid');
+    grid.innerHTML = '';
+
+    list.forEach(t => {
+      state[t.id] = { emails: [] };
+
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <div class="card-header">
+          <div class="badge" style="background:${t.color}22;color:${t.color};">${t.label}</div>
+          <div class="card-title">${t.label}</div>
+          <div class="card-desc">${t.desc}</div>
+          <a href="/preview/${t.preview}" target="_blank" class="preview-btn">
+            ↗ Ver preview do email
+          </a>
+        </div>
+
+        <div class="card-body">
+
+          <div>
+            <label>Emails (um por linha ou separados por vírgula)</label>
+            <textarea id="textarea-${t.id}" placeholder="joao@email.com&#10;maria@email.com&#10;..."></textarea>
+          </div>
+
+          <div>
+            <label>Importar planilha ou CSV</label>
+            <div class="upload-row">
+              <button class="upload-btn" onclick="document.getElementById('file-${t.id}').click()">
+                ↑ Importar arquivo
+              </button>
+              <span class="file-info" id="file-info-${t.id}">CSV, XLSX ou TXT</span>
+              <input type="file" id="file-${t.id}" accept=".csv,.xlsx,.xls,.txt">
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div class="email-count" id="count-${t.id}"><span>0</span> emails na lista</div>
+            <button class="clear-btn" onclick="clearEmails('${t.id}')">limpar lista</button>
+          </div>
+
+          <div class="progress-wrap" id="progress-${t.id}">
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="bar-${t.id}" style="background:${t.color};"></div>
+            </div>
+            <div class="progress-text" id="progress-text-${t.id}">Enviando...</div>
+          </div>
+
+          <div class="result" id="result-${t.id}"></div>
+
+          <button
+            class="send-btn"
+            id="btn-${t.id}"
+            style="background:${t.color};"
+            onclick="sendEmails('${t.id}')"
+          >
+            Disparar emails
+          </button>
+
+        </div>
+      `;
+
+      grid.appendChild(card);
+
+      // Listener textarea
+      document.getElementById(`textarea-${t.id}`).addEventListener('input', () => {
+        const text   = document.getElementById(`textarea-${t.id}`).value;
+        state[t.id].emails = parseEmailsFromText(text);
+        updateCount(t.id);
+      });
+
+      // Listener file input
+      document.getElementById(`file-${t.id}`).addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const infoEl = document.getElementById(`file-info-${t.id}`);
+        infoEl.textContent = 'Processando...';
+        infoEl.className = 'file-info';
+
+        const form = new FormData();
+        form.append('file', file);
+
+        try {
+          const res  = await fetch('/parse', { method: 'POST', body: form });
+          const data = await res.json();
+
+          if (data.error) {
+            infoEl.textContent = data.error;
+            return;
+          }
+
+          // Merge com emails já existentes no textarea
+          const existing = state[t.id].emails;
+          const merged   = [...new Set([...existing, ...data.emails])];
+          state[t.id].emails = merged;
+
+          // Atualiza textarea com a lista completa
+          document.getElementById(`textarea-${t.id}`).value = merged.join('\n');
+
+          infoEl.textContent = `${data.count} emails importados de "${file.name}"`;
+          infoEl.className = 'file-info loaded';
+          updateCount(t.id);
+        } catch (err) {
+          infoEl.textContent = 'Erro ao processar arquivo.';
+        }
+
+        e.target.value = '';
+      });
+    });
+  }
+
+  function clearEmails(id) {
+    state[id].emails = [];
+    document.getElementById(`textarea-${id}`).value = '';
+    document.getElementById(`file-info-${id}`).textContent = 'CSV, XLSX ou TXT';
+    document.getElementById(`file-info-${id}`).className = 'file-info';
+    document.getElementById(`result-${id}`).style.display = 'none';
+    document.getElementById(`progress-${id}`).classList.remove('active');
+    updateCount(id);
+  }
+
+  async function sendEmails(id) {
+    const emails = state[id].emails;
+    if (emails.length === 0) {
+      showResult(id, 'error', 'Adicione pelo menos um email antes de disparar.');
+      return;
+    }
+
+    const btn       = document.getElementById(`btn-${id}`);
+    const progressEl = document.getElementById(`progress-${id}`);
+    const resultEl  = document.getElementById(`result-${id}`);
+    const barEl     = document.getElementById(`bar-${id}`);
+    const textEl    = document.getElementById(`progress-text-${id}`);
+
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    resultEl.style.display = 'none';
+    progressEl.classList.add('active');
+    barEl.style.width = '0%';
+    textEl.innerHTML = 'Iniciando...';
+
+    try {
+      const res = await fetch('/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ template: id, emails }),
+      });
+
+      const reader  = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop();
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          try {
+            const evt = JSON.parse(line.slice(6));
+            handleEvent(id, evt, barEl, textEl, btn, progressEl, resultEl, emails.length);
+          } catch (_) {}
+        }
+      }
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Disparar emails';
+      showResult(id, 'error', 'Erro de conexão. Verifique se o servidor está rodando.');
+    }
+  }
+
+  function handleEvent(id, evt, barEl, textEl, btn, progressEl, resultEl, total) {
+    if (evt.type === 'progress') {
+      const pct = Math.round((evt.sent + evt.failed) / total * 100);
+      barEl.style.width = pct + '%';
+      textEl.innerHTML =
+        `Enviando ${evt.sent + evt.failed} de ${total} — ` +
+        `<span class="ok">${evt.sent} ok</span>` +
+        (evt.failed > 0 ? ` <span class="fail">${evt.failed} erro${evt.failed > 1 ? 's' : ''}</span>` : '');
+    }
+
+    if (evt.type === 'done') {
+      progressEl.classList.remove('active');
+      btn.disabled = false;
+      btn.textContent = 'Disparar emails';
+
+      if (evt.failed === 0) {
+        showResult(id, 'success', `${evt.sent} email${evt.sent > 1 ? 's' : ''} enviado${evt.sent > 1 ? 's' : ''} com sucesso.`);
+      } else if (evt.sent === 0) {
+        showResult(id, 'error', `Falha ao enviar. Verifique as credenciais SMTP.`);
+      } else {
+        showResult(id, 'partial', `${evt.sent} enviados, ${evt.failed} com erro.`);
+      }
+    }
+  }
+
+  function showResult(id, type, msg) {
+    const el = document.getElementById(`result-${id}`);
+    el.className = `result ${type}`;
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+
+  loadTemplates();
+</script>
+</body>
+</html>

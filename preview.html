@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Preview — Emails Facilito</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0d1117; font-family: Arial, sans-serif; }
+    .sidebar { position: fixed; top: 0; left: 0; width: 210px; height: 100vh; background: #161b22; border-right: 1px solid #21262d; padding: 20px 12px; z-index: 10; }
+    .sidebar h2 { color: #F9CE62; font-size: 17px; margin-bottom: 2px; }
+    .sidebar p  { color: rgba(255,255,255,0.3); font-size: 11px; margin-bottom: 20px; }
+    .nav-label  { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.25); padding: 0 8px; margin: 16px 0 6px; }
+    .tab { display: block; width: 100%; padding: 9px 12px; border-radius: 7px; cursor: pointer; font-size: 13px; font-weight: 600; border: none; text-align: left; background: transparent; color: rgba(255,255,255,0.5); margin-bottom: 2px; }
+    .tab:hover  { background: rgba(255,255,255,0.07); color: #fff; }
+    .tab.active { background: rgba(249,206,98,0.12); color: #F9CE62; border-left: 3px solid #F9CE62; padding-left: 9px; }
+    .badge { font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-left: 6px; background: rgba(54,98,255,0.2); color: #6B8FFF; }
+    .main   { margin-left: 210px; padding: 28px 32px; }
+    .panel  { display: none; }
+    .panel.active { display: block; }
+    .frame-wrap { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.5); max-width: 680px; }
+    .frame-bar  { background: #f1f3f4; padding: 10px 16px; display: flex; align-items: center; gap: 6px; }
+    .dot   { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-r { background:#ff5f57; } .dot-y { background:#febc2e; } .dot-g { background:#28c840; }
+    .frame-bar span { font-size: 12px; color: #555; margin-left: 6px; }
+    iframe { width: 100%; border: none; display: block; }
+    .info  { margin-top: 12px; padding: 10px 16px; background: rgba(255,255,255,0.04); border-radius: 8px; border-left: 3px solid #F9CE62; }
+    .info p { font-size: 12px; color: rgba(255,255,255,0.45); }
+    .info code { background: rgba(249,206,98,0.1); padding: 2px 6px; border-radius: 4px; font-size: 11px; color: #F9CE62; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Facilito</h2>
+    <p>Preview de Emails</p>
+    <div class="nav-label">Emails</div>
+    <button class="tab active" onclick="show('precadastro',this)">1. Pré-cadastro <span class="badge">lista</span></button>
+    <button class="tab" onclick="show('beta',this)">2. Beta <span class="badge">convite</span></button>
+    <button class="tab" onclick="show('lancamento',this)">3. Lançamento <span class="badge">launch</span></button>
+  </div>
+
+  <div class="main">
+
+    <div id="panel-precadastro" class="panel active">
+      <div class="frame-wrap">
+        <div class="frame-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span>Assunto: "Você está na lista do Facilito!"</span>
+        </div>
+        <iframe src="email-precadastro-preview.html" height="960"></iframe>
+      </div>
+      <div class="info"><p>Arquivo: <code>email-precadastro.html</code> &nbsp;|&nbsp; Mascote hero: <code>mascote-20</code> &nbsp;|&nbsp; Ícones: <code>45, 47, 50</code></p></div>
+    </div>
+
+    <div id="panel-beta" class="panel">
+      <div class="frame-wrap">
+        <div class="frame-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span>Assunto: "Você foi selecionado para testar o Facilito"</span>
+        </div>
+        <iframe src="email-beta-preview.html" height="960"></iframe>
+      </div>
+      <div class="info"><p>Arquivo: <code>email-beta.html</code> &nbsp;|&nbsp; Mascote: <code>mascote-48</code></p></div>
+    </div>
+
+    <div id="panel-lancamento" class="panel">
+      <div class="frame-wrap">
+        <div class="frame-bar">
+          <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+          <span>Assunto: "O Facilito chegou! Acesse agora"</span>
+        </div>
+        <iframe src="email-lancamento-preview.html" height="960"></iframe>
+      </div>
+      <div class="info"><p>Arquivo: <code>email-lancamento.html</code> &nbsp;|&nbsp; Mascote: <code>mascote-43</code></p></div>
+    </div>
+
+  </div>
+
+  <script>
+    function show(name, el) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById('panel-' + name).classList.add('active');
+      el.classList.add('active');
+    }
+  </script>
+</body>
+</html>

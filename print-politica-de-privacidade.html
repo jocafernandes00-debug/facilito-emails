@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Política de Privacidade — Facilito</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #fff; width: 210mm; }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      break-after: page;
+      page-break-after: always;
+    }
+    .page:last-child { break-after: avoid; page-break-after: avoid; }
+
+    .header { background-color: #061685; }
+    .header-bar { display: flex; height: 6px; }
+    .header-bar-yellow { background: #F9CE62; flex: 1; }
+    .header-bar-blue   { background: #3662FF; flex: 1; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px 16px 28px; }
+    .header-logo img { height: 32px; display: block; }
+    .header-info { text-align: right; }
+    .header-info p { color: rgba(255,255,255,0.55); font-size: 9pt; }
+    .header-info a { color: #F9CE62; text-decoration: none; font-weight: 700; }
+    .header-accent { height: 4px; background: #3662FF; }
+
+    .content { padding: 13mm 26mm 12mm 26mm; }
+
+    .doc-meta { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 7mm; padding-bottom: 4mm; border-bottom: 1.5px solid #EBEBEB; }
+    .doc-title { font-size: 11pt; font-weight: 900; color: #061685; letter-spacing: -0.3px; margin-bottom: 3px; }
+    .doc-subtitle { font-size: 9pt; color: #9CA3AF; }
+    .doc-date { font-size: 9pt; color: #9CA3AF; text-align: right; }
+
+    .section-title { font-size: 12.5pt; font-weight: 900; color: #061685; letter-spacing: -0.3px; margin-top: 5mm; margin-bottom: 2mm; }
+    .section-title.first { margin-top: 0; }
+    .subsection-title { font-size: 10pt; font-weight: 700; color: #061685; margin-top: 3.5mm; margin-bottom: 1.5mm; }
+    .body-text { font-size: 10pt; color: #374151; line-height: 1.7; margin-bottom: 2mm; }
+    .body-list { margin: 0 0 2mm 5mm; padding: 0; list-style: none; }
+    .body-list li { font-size: 10pt; color: #374151; line-height: 1.7; padding-left: 12px; position: relative; }
+    .body-list li::before { content: "•"; position: absolute; left: 0; color: #3662FF; font-weight: 700; }
+    .divider { height: 1px; background: #EBEBEB; margin: 3.5mm 0; }
+
+    .signature-area { margin-top: 8mm; padding-top: 4mm; border-top: 1px solid #EBEBEB; display: flex; align-items: flex-end; justify-content: space-between; }
+    .sig-line { border-top: 1.5px solid #374151; margin-bottom: 4px; width: 56mm; }
+    .sig-name { font-size: 9.5pt; font-weight: 700; color: #061685; }
+    .sig-role { font-size: 8.5pt; color: #9CA3AF; }
+    .sig-logo img { height: 20px; opacity: 0.35; }
+
+    .footer-wrap { position: absolute; bottom: 0; left: 0; right: 0; background-color: #061685; }
+    .footer-bar { height: 4px; display: flex; }
+    .footer-bar-blue   { background: #3662FF; flex: 1; }
+    .footer-bar-yellow { background: #F9CE62; flex: 1; }
+    .footer { padding: 8px 26px; display: flex; align-items: center; justify-content: space-between; }
+    .footer p { color: rgba(255,255,255,0.35); font-size: 7.5pt; }
+    .footer-divider { color: rgba(255,255,255,0.15); margin: 0 5px; }
+    .page-num { position: absolute; bottom: 17mm; right: 13mm; font-size: 8pt; color: #D1D5DB; }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ======================== PÁGINA 1 ======================== -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <div class="doc-meta">
+      <div>
+        <p class="doc-title">POLÍTICA DE PRIVACIDADE</p>
+        <p class="doc-subtitle">Documento Institucional — Facilito</p>
+      </div>
+      <div class="doc-date"><p>Data: 22/04/2026</p><p style="margin-top:3px;">Ref.: #0004</p></div>
+    </div>
+
+    <p class="section-title first">Disposições Gerais e Definições</p>
+    <p class="body-text">Esta Política de Privacidade estabelece as diretrizes aplicáveis ao tratamento de dados pessoais realizado pela Facilito no contexto de sua plataforma digital, em conformidade com a Lei nº 13.709/2018 (LGPD), bem como com a legislação consumerista e demais normas aplicáveis. Ao utilizar a plataforma, o titular declara estar ciente das regras aqui previstas.</p>
+    <p class="body-text">Para os fins desta Política, considera-se Facilito a plataforma tecnológica que conecta clientes e prestadores de serviços, disponibilizando ambiente digital de interação, organização de demandas, comunicação interna e intermediação operacional do fluxo de pagamentos.</p>
+    <p class="body-text">Considera-se titular a pessoa natural a quem se referem os dados pessoais objeto de tratamento. Considera-se tratamento toda operação realizada com dados pessoais, tais como coleta, recepção, classificação, utilização, acesso, processamento, armazenamento, compartilhamento, eliminação e demais atos correlatos.</p>
+    <p class="body-text">A presente Política aplica-se a todos os usuários da plataforma, inclusive clientes, prestadores, potenciais cadastrados e demais pessoas que, por qualquer meio legítimo, forneçam dados pessoais à Facilito no contexto de utilização da plataforma web ou de canais operacionais vinculados ao serviço.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Dados Pessoais Coletados</p>
+    <p class="body-text">A Facilito poderá coletar dados cadastrais e identificadores necessários à formação e manutenção do vínculo de uso da plataforma, inclusive nome, CPF ou CNPJ, telefone, endereço de correio eletrônico, localização e dados bancários ou de pagamento fornecidos pelo próprio usuário para viabilização das funcionalidades contratadas.</p>
+    <p class="body-text">Também poderão ser tratados dados técnicos e operacionais gerados pela navegação e pelo uso da plataforma, tais como registros de acesso, logs de atividade, histórico de interações, confirmações de início e conclusão de serviços, evidências visuais enviadas pelos usuários e demais informações indispensáveis à segurança e rastreabilidade do ecossistema digital.</p>
+    <p class="body-text">A Facilito não orienta o usuário a fornecer dados excessivos ou incompatíveis com a finalidade do serviço. Sempre que possível, será observada a minimização do tratamento, com limitação da coleta ao estritamente necessário para execução das atividades disponibilizadas na plataforma.</p>
+  </div>
+  <span class="page-num">1</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 2 ======================== -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">Finalidades do Tratamento</p>
+    <p class="body-text">Os dados pessoais tratados pela Facilito são utilizados para permitir o cadastro e autenticação de usuários, verificar identidade, viabilizar a contratação de serviços dentro da plataforma, registrar interações, operacionalizar o suporte, intermediar fluxos de pagamento, prevenir fraudes e assegurar a adequada execução das funcionalidades disponibilizadas.</p>
+    <p class="body-text">O tratamento também poderá ocorrer para fins de cumprimento de obrigações legais, regulatórias e contratuais, exercício regular de direitos em processos administrativos ou judiciais, resposta a solicitações de autoridades públicas competentes e preservação de provas relacionadas ao uso da plataforma.</p>
+    <p class="body-text">Quando houver necessidade de melhoria de produtos, governança interna, auditoria ou proteção do ambiente digital, a Facilito poderá tratar dados com fundamento em seu legítimo interesse, sempre observados os direitos e liberdades fundamentais do titular e os princípios da necessidade, adequação e proporcionalidade.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Bases Legais Utilizadas</p>
+    <p class="body-text">O tratamento de dados pessoais realizado pela Facilito fundamenta-se nas bases legais previstas na LGPD, especialmente: execução de contrato ou de procedimentos preliminares relacionados a contrato do qual o titular seja parte; cumprimento de obrigação legal ou regulatória; exercício regular de direitos; e legítimo interesse do controlador, quando cabível.</p>
+    <p class="body-text">Nas hipóteses em que o consentimento se mostrar juridicamente necessário, este será solicitado de forma destacada, específica e inequívoca, podendo ser revogado pelo titular nos termos da legislação aplicável, sem prejuízo da validade dos tratamentos anteriormente realizados sob amparo legal.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Compartilhamento de Dados</p>
+    <p class="body-text">A Facilito não comercializa dados pessoais e não realiza compartilhamento indiscriminado com terceiros para finalidades alheias à operação da plataforma. O tratamento é orientado por critérios de necessidade, pertinência e segurança.</p>
+    <p class="body-text">Os dados poderão ser compartilhados, estritamente na medida do necessário, com parceiros operacionais responsáveis por viabilizar funcionalidades essenciais da plataforma, inclusive a instituição de pagamento parceira utilizada no processamento financeiro das transações — atualmente o Asaas —, sempre para execução do serviço contratado, gestão do fluxo de pagamentos, prevenção de fraudes e cumprimento de obrigações legais.</p>
+    <p class="body-text">Os dados também poderão ser disponibilizados a autoridades públicas, órgãos reguladores, Poder Judiciário, Ministério Público ou autoridades administrativas e demais entes legitimados, sempre que houver obrigação legal, determinação válida ou necessidade de defesa de direitos.</p>
+
+  </div>
+  <span class="page-num">2</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 3 ======================== -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">Armazenamento, Retenção e Eliminação</p>
+    <p class="body-text">Os dados pessoais serão armazenados em ambiente razoavelmente seguro, pelo tempo necessário ao cumprimento das finalidades para as quais foram coletados, à execução contratual, ao atendimento de exigências legais e regulatórias, à preservação de direitos e à resolução de eventuais controvérsias.</p>
+    <p class="body-text">Mesmo após o encerramento do cadastro, determinados dados poderão ser mantidos pelo prazo exigido em lei, por normas regulatórias, por políticas de prevenção à fraude ou enquanto necessários ao exercício regular de direitos em demandas administrativas e judiciais.</p>
+    <p class="body-text">Uma vez esgotada a finalidade e inexistente obrigação legal ou base legítima de retenção, os dados serão eliminados, anonimizados ou submetidos a procedimento seguro de descarte, conforme a natureza da informação e a viabilidade técnica do caso concreto.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Segurança da Informação</p>
+    <p class="body-text">A Facilito adota medidas técnicas e administrativas voltadas à proteção dos dados pessoais contra acessos não autorizados, situações acidentais ou ilícitas de destruição, perda, alteração, comunicação ou qualquer forma de tratamento inadequado ou ilícito.</p>
+    <p class="body-text">Entre as salvaguardas adotadas encontram-se protocolos de criptografia, mecanismos de controle de acesso, segregação de permissões, registros de atividade, rastreabilidade operacional e rotinas internas destinadas à preservação da integridade e da confidencialidade das informações.</p>
+    <p class="body-text">Embora sejam empregados esforços compatíveis com a natureza da operação, nenhum sistema é absolutamente invulnerável. Por essa razão, o usuário também deve adotar boas práticas de segurança, manter a confidencialidade de suas credenciais e comunicar prontamente qualquer suspeita de uso indevido ou comprometimento de conta.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Cookies, Logs e Tecnologias Correlatas</p>
+    <p class="body-text">A plataforma poderá utilizar cookies, identificadores eletrônicos, registros de sessão e tecnologias equivalentes para assegurar funcionamento adequado, autenticação, continuidade da experiência do usuário, melhoria de desempenho, prevenção de fraudes e geração de registros mínimos necessários à segurança da operação.</p>
+    <p class="body-text">Os logs de acesso e de atividade poderão ser mantidos na forma da legislação aplicável, especialmente para fins de auditoria, rastreabilidade, resposta a incidentes, apuração de irregularidades e demonstração da regularidade das interações realizadas no ambiente digital.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Direitos do Titular</p>
+    <p class="body-text">Nos termos da LGPD, o titular poderá requerer a confirmação da existência de tratamento, o acesso aos dados, a correção de dados incompletos, inexatos ou desatualizados, a anonimização, bloqueio ou eliminação de dados desnecessários, a portabilidade, a informação acerca de compartilhamentos realizados e a revisão de decisões tomadas com base em tratamento automatizado, quando aplicável.</p>
+    <p class="body-text">A eliminação dos dados não será possível quando houver fundamento legal que justifique sua conservação, inclusive para cumprimento de obrigação legal ou regulatória, exercício regular de direitos, prevenção à fraude ou manutenção da segurança do ambiente digital.</p>
+    <p class="body-text">As solicitações poderão ser apresentadas pelos canais disponibilizados pela Facilito, sendo facultado ao controlador solicitar informações complementares aptas a confirmar a identidade do requerente e a resguardar a segurança do procedimento.</p>
+
+  </div>
+  <span class="page-num">3</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 4 ======================== -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">Direitos do Titular</p>
+    <p class="body-text">Nos termos da LGPD, o titular poderá requerer a confirmação da existência de tratamento, o acesso aos dados, a correção de dados incompletos, inexatos ou desatualizados, a anonimização, bloqueio ou eliminação de dados desnecessários, a portabilidade, a informação acerca de compartilhamentos realizados e a revisão de decisões tomadas com base em tratamento automatizado, quando aplicável.</p>
+    <p class="body-text">A eliminação dos dados não será possível quando houver fundamento legal que justifique sua conservação, inclusive para cumprimento de obrigação legal ou regulatória, exercício regular de direitos, prevenção à fraude ou manutenção da segurança do ambiente digital.</p>
+    <p class="body-text">As solicitações poderão ser apresentadas pelos canais disponibilizados pela Facilito, sendo facultado ao controlador solicitar informações complementares aptas a confirmar a identidade do requerente e a resguardar a segurança do procedimento.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Responsabilidades do Usuário</p>
+    <p class="body-text">O usuário compromete-se a fornecer informações verdadeiras, atualizadas e legítimas, abstendo-se de inserir na plataforma dados de terceiros sem base jurídica adequada, autorização válida ou respaldo legal suficiente.</p>
+    <p class="body-text">Compete ao usuário zelar pela segurança de seu login, senha, dispositivo e meios de autenticação, bem como utilizar a plataforma em conformidade com a legislação, com os Termos de Uso e com os padrões mínimos de conduta e segurança estabelecidos pelo controlador.</p>
+    <p class="body-text">A Facilito poderá adotar medidas internas de contenção, bloqueio, suspensão e registro quando verificar indícios de fraude, comportamento abusivo, uso indevido de dados ou qualquer prática capaz de comprometer a segurança e o funcionamento regular da plataforma.</p>
+  </div>
+  <span class="page-num">4</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 5 ======================== -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">Alterações desta Política</p>
+    <p class="body-text">A presente Política poderá ser alterada a qualquer tempo, a critério da Facilito, para refletir mudanças legislativas, regulatórias, operacionais, tecnológicas ou estruturais na prestação dos serviços.</p>
+    <p class="body-text">As versões atualizadas serão disponibilizadas em canal acessível ao usuário, passando a produzir efeitos a partir de sua publicação, sem prejuízo do dever de transparência quanto às modificações relevantes eventualmente implementadas.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Contato e Exercício de Direitos</p>
+    <p class="body-text">O titular poderá entrar em contato com a Facilito para esclarecimentos, solicitações relacionadas ao tratamento de dados pessoais, exercício de direitos previstos na LGPD, comunicação de incidentes, questionamentos sobre segurança da informação e demais providências correlatas.</p>
+    <p class="body-text">A plataforma mantém canal específico para atendimento de demandas relacionadas à privacidade, com registro formal das solicitações, a fim de assegurar governança, transparência e rastreabilidade no relacionamento com os titulares.</p>
+    <p class="subsection-title">Canal oficial de atendimento:</p>
+    <p class="body-text" style="color:#3662FF;font-weight:700;">suporte@facilitoapp.com.br</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Foro e Legislação Aplicável</p>
+    <p class="body-text">Esta Política será interpretada de acordo com a legislação da República Federativa do Brasil, especialmente a Lei nº 13.709/2018, o Marco Civil da Internet, o Código de Defesa do Consumidor e demais normas aplicáveis.</p>
+    <p class="body-text">Sem prejuízo das regras protetivas eventualmente aplicáveis ao consumidor, fica eleito o foro do domicílio do usuário ou outro que se revele competente na forma da legislação vigente, para dirimir controvérsias oriundas desta Política.</p>
+
+    <div class="signature-area">
+      <div>
+        <div class="sig-line"></div>
+        <p class="sig-name">Joaquim Fernandes</p>
+        <p class="sig-role">Fundador &nbsp;|&nbsp; Facilito</p>
+      </div>
+      <div class="sig-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" style="filter:invert(1);opacity:0.3;">
+      </div>
+    </div>
+  </div>
+  <span class="page-num">5</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+</body>
+</html>

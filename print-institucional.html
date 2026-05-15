@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Apresentação Institucional — Facilito</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #fff; width: 210mm; }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      break-after: page;
+      page-break-after: always;
+    }
+    .page:last-child { break-after: avoid; page-break-after: avoid; }
+
+    .header { background-color: #061685; }
+    .header-bar { display: flex; height: 6px; }
+    .header-bar-yellow { background: #F9CE62; flex: 1; }
+    .header-bar-blue   { background: #3662FF; flex: 1; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px 16px 28px; }
+    .header-logo img { height: 32px; display: block; }
+    .header-info { text-align: right; }
+    .header-info p { color: rgba(255,255,255,0.55); font-size: 9pt; }
+    .header-info a { color: #F9CE62; text-decoration: none; font-weight: 700; }
+    .header-accent { height: 4px; background: #3662FF; }
+
+    .content { padding: 13mm 26mm 12mm 26mm; }
+
+    .doc-meta { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 7mm; padding-bottom: 4mm; border-bottom: 1.5px solid #EBEBEB; }
+    .doc-title { font-size: 11pt; font-weight: 900; color: #061685; letter-spacing: -0.3px; margin-bottom: 3px; }
+    .doc-subtitle { font-size: 9pt; color: #9CA3AF; }
+    .doc-date { font-size: 9pt; color: #9CA3AF; text-align: right; }
+
+    .section-title { font-size: 12.5pt; font-weight: 900; color: #061685; letter-spacing: -0.3px; margin-top: 5mm; margin-bottom: 2mm; }
+    .section-title.first { margin-top: 0; }
+    .subsection-title { font-size: 10pt; font-weight: 700; color: #061685; margin-top: 3.5mm; margin-bottom: 1.5mm; }
+    .body-text { font-size: 10pt; color: #374151; line-height: 1.7; margin-bottom: 2mm; }
+    .body-list { margin: 0 0 2mm 5mm; padding: 0; list-style: none; }
+    .body-list li { font-size: 10pt; color: #374151; line-height: 1.7; padding-left: 12px; position: relative; }
+    .body-list li::before { content: "•"; position: absolute; left: 0; color: #3662FF; font-weight: 700; }
+    .body-list-num { margin: 0 0 2mm 5mm; padding: 0; list-style: none; counter-reset: item; }
+    .body-list-num li { font-size: 10pt; color: #374151; line-height: 1.7; padding-left: 18px; position: relative; counter-increment: item; }
+    .body-list-num li::before { content: counter(item) "."; position: absolute; left: 0; color: #3662FF; font-weight: 700; font-size: 9pt; }
+    .divider { height: 1px; background: #EBEBEB; margin: 3.5mm 0; }
+
+    .signature-area { margin-top: 8mm; padding-top: 4mm; border-top: 1px solid #EBEBEB; display: flex; align-items: flex-end; justify-content: space-between; }
+    .sig-line { border-top: 1.5px solid #374151; margin-bottom: 4px; width: 56mm; }
+    .sig-name { font-size: 9.5pt; font-weight: 700; color: #061685; }
+    .sig-role { font-size: 8.5pt; color: #9CA3AF; }
+    .sig-logo img { height: 20px; opacity: 0.35; }
+
+    .footer-wrap { position: absolute; bottom: 0; left: 0; right: 0; background-color: #061685; }
+    .footer-bar { height: 4px; display: flex; }
+    .footer-bar-blue   { background: #3662FF; flex: 1; }
+    .footer-bar-yellow { background: #F9CE62; flex: 1; }
+    .footer { padding: 8px 26px; display: flex; align-items: center; justify-content: space-between; }
+    .footer p { color: rgba(255,255,255,0.35); font-size: 7.5pt; }
+    .footer-divider { color: rgba(255,255,255,0.15); margin: 0 5px; }
+    .page-num { position: absolute; bottom: 17mm; right: 13mm; font-size: 8pt; color: #D1D5DB; }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ======================== PÁGINA 1 ======================== -->
+<!-- Apresentação + O que é + Contexto de mercado -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <div class="doc-meta">
+      <div>
+        <p class="doc-title">APRESENTAÇÃO INSTITUCIONAL</p>
+        <p class="doc-subtitle">Documento Institucional — Facilito</p>
+      </div>
+      <div class="doc-date"><p>Data: 22/04/2026</p><p style="margin-top:3px;">Ref.: #0001</p></div>
+    </div>
+
+    <p class="section-title first">Apresentação Institucional</p>
+    <p class="body-text">O Facilito é uma plataforma digital criada para simplificar, organizar e profissionalizar a relação entre empresas, prestadores de serviços e clientes finais. Com foco em eficiência operacional, transparência e escalabilidade, o Facilito nasce como uma solução moderna para um mercado que ainda opera de forma fragmentada, informal e pouco integrada.</p>
+    <p class="body-text">A empresa foi estruturada com visão de longo prazo, governança clara e modelo de negócios sustentável, posicionando-se como um hub confiável para conexões comerciais, gestão de contatos, organização de demandas e intermediação de oportunidades.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">O que é o Facilito</p>
+    <p class="body-text">O Facilito é uma plataforma tecnológica que conecta clientes a prestadores de serviços e empresas, centralizando comunicação, visibilidade, organização e acesso a oportunidades comerciais em um único ambiente digital.</p>
+    <p class="body-text">Mais do que um marketplace, o Facilito atua como uma infraestrutura de relacionamento e gestão, permitindo que profissionais e empresas ampliem sua presença digital, organizem sua operação e gerem novos negócios de forma recorrente.</p>
+
+    <div class="divider"></div>
+
+    <p class="subsection-title">Contexto de mercado</p>
+    <p class="body-text">O mercado de serviços no Brasil é altamente pulverizado, com milhões de prestadores atuando de forma independente ou semi-estruturada. Ao mesmo tempo, clientes enfrentam dificuldade para encontrar fornecedores confiáveis, comparar opções e garantir segurança nas contratações.</p>
+    <p class="body-text">A ausência de padronização, tecnologia acessível e canais centralizados cria ineficiências, perdas de tempo e baixa previsibilidade de receita para quem presta serviços. O Facilito surge para ocupar esse espaço, oferecendo estrutura, visibilidade e organização.</p>
+  </div>
+  <span class="page-num">1</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 2 ======================== -->
+<!-- Problema + Objetivo + Propósito + Público-alvo + Missão/Visão/Valores -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="subsection-title" style="margin-top:0;">Problema que a empresa resolve</p>
+    <ul class="body-list">
+      <li>Dificuldade de conexão entre clientes e prestadores qualificados</li>
+      <li>Falta de organização comercial e operacional dos prestadores</li>
+      <li>Baixa visibilidade digital para pequenos e médios negócios</li>
+      <li>Processos manuais, informais e pouco escaláveis</li>
+      <li>Falta de confiança e transparência nas contratações</li>
+    </ul>
+
+    <p class="subsection-title">Objetivo do Facilito</p>
+    <p class="body-text">O principal objetivo do Facilito é simplificar o acesso a serviços e oportunidades comerciais, promovendo eficiência, segurança e crescimento sustentável para todos os envolvidos no ecossistema.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title" style="margin-top:0;">Propósito do Facilito</p>
+    <p class="body-text">O propósito do Facilito é democratizar o acesso à tecnologia e à geração de negócios, permitindo que profissionais e empresas cresçam com estrutura, previsibilidade e profissionalismo, independentemente do seu porte.</p>
+
+    <p class="subsection-title">Público-alvo atendido</p>
+    <ul class="body-list">
+      <li>Prestadores de serviços autônomos</li>
+      <li>Pequenas e médias empresas</li>
+      <li>Empresas locais e regionais</li>
+      <li>Clientes finais que buscam serviços com agilidade e confiança</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <p class="section-title" style="margin-top:0;">Missão, Visão e Valores</p>
+
+    <p class="subsection-title">Missão</p>
+    <p class="body-text">Simplificar a conexão entre pessoas e empresas, oferecendo uma plataforma confiável que gere oportunidades, organização e crescimento sustentável.</p>
+
+    <p class="subsection-title">Visão</p>
+    <p class="body-text">Ser reconhecida como a principal plataforma de conexão e organização de serviços no Brasil, referência em eficiência, confiança e impacto positivo no ecossistema empresarial.</p>
+
+    <p class="subsection-title">Valores</p>
+    <ul class="body-list">
+      <li>Transparência nas relações</li>
+      <li>Simplicidade com eficiência</li>
+      <li>Foco em resultados</li>
+      <li>Inovação contínua</li>
+      <li>Respeito ao cliente e ao parceiro</li>
+    </ul>
+  </div>
+  <span class="page-num">2</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 3 ======================== -->
+<!-- Como Funciona + Processos Operacionais -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">Como o Facilito Funciona</p>
+
+    <p class="subsection-title">Visão geral da plataforma</p>
+    <p class="body-text">O Facilito funciona como uma plataforma digital acessível via web, onde prestadores e empresas criam perfis, divulgam seus serviços e recebem contatos qualificados de clientes interessados.</p>
+
+    <p class="subsection-title">Fluxo do processo</p>
+    <ol class="body-list-num">
+      <li>Cadastro do prestador ou empresa</li>
+      <li>Validação básica das informações</li>
+      <li>Criação do perfil e oferta de serviços</li>
+      <li>Visibilidade dentro da plataforma</li>
+      <li>Contato direto com clientes</li>
+      <li>Gestão das oportunidades recebidas</li>
+    </ol>
+
+    <p class="subsection-title">Experiência do usuário</p>
+    <p class="body-text">Para o cliente, a experiência é simples, rápida e objetiva. Para o parceiro, o Facilito oferece organização, previsibilidade e controle sobre sua operação comercial.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Processos Operacionais</p>
+
+    <p class="subsection-title">Cadastro e validação</p>
+    <p class="body-text">O cadastro é realizado de forma digital, com coleta de informações essenciais para garantir segurança, qualidade e confiabilidade da plataforma.</p>
+
+    <p class="subsection-title">Uso da plataforma</p>
+    <p class="body-text">Os parceiros utilizam o Facilito para divulgar seus serviços, receber contatos, organizar demandas e acompanhar oportunidades de negócio.</p>
+
+    <p class="subsection-title">Segurança e conformidade</p>
+    <p class="body-text">O Facilito adota boas práticas de segurança da informação, proteção de dados e conformidade com a legislação vigente, incluindo a Lei Geral de Proteção de Dados (LGPD).</p>
+  </div>
+  <span class="page-num">3</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 4 ======================== -->
+<!-- Modelo de Pagamento + Taxas e Tarifas + Planos -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">Modelo de Pagamento</p>
+
+    <p class="subsection-title">Formas de pagamento</p>
+    <p class="body-text">Os pagamentos podem ser realizados por meios digitais, conforme os planos e serviços contratados dentro da plataforma.</p>
+
+    <p class="subsection-title">Prazos de processamento</p>
+    <p class="body-text">Os prazos seguem padrões de mercado, com clareza nas regras de compensação e liberação de valores quando aplicável.</p>
+
+    <p class="subsection-title">Repasses e liquidação financeira</p>
+    <p class="body-text">Quando há intermediação financeira, os repasses são realizados de forma transparente, com relatórios claros e acompanhamento pelo parceiro.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Taxas e Tarifas</p>
+
+    <p class="subsection-title">Tipos de taxas</p>
+    <p class="body-text">O Facilito pode operar com taxas de visibilidade, intermediação ou serviços adicionais, conforme o modelo comercial vigente.</p>
+
+    <p class="subsection-title">Transparência na cobrança</p>
+    <p class="body-text">Todas as taxas são apresentadas de forma clara, sem cobranças ocultas ou surpresas para o usuário.</p>
+
+    <p class="subsection-title">Justificativa de valor agregado</p>
+    <p class="body-text">As taxas refletem o acesso à tecnologia, visibilidade, organização e geração de oportunidades que o Facilito proporciona.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Planos e Modelos Comerciais</p>
+
+    <p class="subsection-title">Tipos de planos</p>
+    <ul class="body-list">
+      <li>Plano gratuito com funcionalidades básicas</li>
+      <li>Planos de maior visibilidade e alcance</li>
+    </ul>
+
+    <p class="subsection-title">Diferenças entre os planos</p>
+    <p class="body-text">Os planos variam conforme nível de exposição, acesso a recursos e volume de oportunidades.</p>
+
+    <p class="subsection-title">Indicação de uso</p>
+    <p class="body-text">Cada plano atende a diferentes estágios de maturidade do negócio, desde iniciantes até empresas estruturadas.</p>
+  </div>
+  <span class="page-num">4</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 5 ======================== -->
+<!-- Benefícios Parceiros + Benefícios Clientes + Diferenciais + Considerações + Assinatura -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">Benefícios para Parceiros</p>
+
+    <p class="subsection-title">Vantagens estratégicas</p>
+    <ul class="body-list">
+      <li>Aumento de visibilidade</li>
+      <li>Geração contínua de oportunidades</li>
+      <li>Organização comercial</li>
+      <li>Redução de custos de aquisição de clientes</li>
+    </ul>
+
+    <p class="subsection-title">Crescimento conjunto</p>
+    <p class="body-text">O Facilito cresce junto com seus parceiros, criando um ecossistema sustentável e escalável.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Benefícios para Clientes</p>
+
+    <p class="subsection-title">Facilidade de uso</p>
+    <p class="body-text">Plataforma intuitiva e acessível.</p>
+
+    <p class="subsection-title">Economia de tempo</p>
+    <p class="body-text">Menos esforço para encontrar serviços confiáveis.</p>
+
+    <p class="subsection-title">Segurança</p>
+    <p class="body-text">Maior confiança no processo de contratação.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Diferenciais Competitivos</p>
+    <ul class="body-list">
+      <li>Plataforma simples e focada em resultados</li>
+      <li>Modelo escalável</li>
+      <li>Baixo custo de entrada</li>
+      <li>Foco em pequenos e médios negócios</li>
+      <li>Visão de longo prazo</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <p class="section-title">Considerações Finais</p>
+    <p class="body-text">O Facilito foi criado para resolver um problema real de mercado com uma solução prática, escalável e orientada a resultados. A empresa está aberta a parcerias estratégicas, integrações e investimentos que acelerem seu crescimento e ampliem seu impacto no mercado.</p>
+    <p class="body-text">O convite está aberto para empresas e parceiros que compartilhem da mesma visão: simplificar, organizar e crescer de forma sustentável.</p>
+
+    <div class="signature-area">
+      <div>
+        <div class="sig-line"></div>
+        <p class="sig-name">Joaquim Fernandes</p>
+        <p class="sig-role">Fundador &nbsp;|&nbsp; Facilito</p>
+      </div>
+      <div class="sig-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" style="filter:invert(1);opacity:0.3;">
+      </div>
+    </div>
+  </div>
+  <span class="page-num">5</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Termos de Uso — Facilito</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #fff; width: 210mm; }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      break-after: page;
+      page-break-after: always;
+    }
+    .page:last-child { break-after: avoid; page-break-after: avoid; }
+
+    .header { background-color: #061685; }
+    .header-bar { display: flex; height: 6px; }
+    .header-bar-yellow { background: #F9CE62; flex: 1; }
+    .header-bar-blue   { background: #3662FF; flex: 1; }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px 16px 28px; }
+    .header-logo img { height: 32px; display: block; }
+    .header-info { text-align: right; }
+    .header-info p { color: rgba(255,255,255,0.55); font-size: 9pt; }
+    .header-info a { color: #F9CE62; text-decoration: none; font-weight: 700; }
+    .header-accent { height: 4px; background: #3662FF; }
+
+    .content { padding: 13mm 26mm 12mm 26mm; }
+
+    .doc-meta { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 7mm; padding-bottom: 4mm; border-bottom: 1.5px solid #EBEBEB; }
+    .doc-title { font-size: 11pt; font-weight: 900; color: #061685; letter-spacing: -0.3px; margin-bottom: 3px; }
+    .doc-subtitle { font-size: 9pt; color: #9CA3AF; }
+    .doc-date { font-size: 9pt; color: #9CA3AF; text-align: right; }
+
+    .section-title { font-size: 12.5pt; font-weight: 900; color: #061685; letter-spacing: -0.3px; margin-top: 5mm; margin-bottom: 2mm; }
+    .section-title.first { margin-top: 0; }
+    .subsection-title { font-size: 10pt; font-weight: 700; color: #061685; margin-top: 3.5mm; margin-bottom: 1.5mm; }
+    .body-text { font-size: 10pt; color: #374151; line-height: 1.7; margin-bottom: 2mm; }
+    .body-list { margin: 0 0 2mm 5mm; padding: 0; list-style: none; }
+    .body-list li { font-size: 10pt; color: #374151; line-height: 1.7; padding-left: 12px; position: relative; }
+    .body-list li::before { content: "•"; position: absolute; left: 0; color: #3662FF; font-weight: 700; }
+    .divider { height: 1px; background: #EBEBEB; margin: 3.5mm 0; }
+
+    .signature-area { margin-top: 8mm; padding-top: 4mm; border-top: 1px solid #EBEBEB; display: flex; align-items: flex-end; justify-content: space-between; }
+    .sig-line { border-top: 1.5px solid #374151; margin-bottom: 4px; width: 56mm; }
+    .sig-name { font-size: 9.5pt; font-weight: 700; color: #061685; }
+    .sig-role { font-size: 8.5pt; color: #9CA3AF; }
+    .sig-logo img { height: 20px; opacity: 0.35; }
+
+    .footer-wrap { position: absolute; bottom: 0; left: 0; right: 0; background-color: #061685; }
+    .footer-bar { height: 4px; display: flex; }
+    .footer-bar-blue   { background: #3662FF; flex: 1; }
+    .footer-bar-yellow { background: #F9CE62; flex: 1; }
+    .footer { padding: 8px 26px; display: flex; align-items: center; justify-content: space-between; }
+    .footer p { color: rgba(255,255,255,0.35); font-size: 7.5pt; }
+    .footer-divider { color: rgba(255,255,255,0.15); margin: 0 5px; }
+    .page-num { position: absolute; bottom: 17mm; right: 13mm; font-size: 8pt; color: #D1D5DB; }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ======================== PÁGINA 1 ======================== -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <div class="doc-meta">
+      <div>
+        <p class="doc-title">TERMOS DE USO</p>
+        <p class="doc-subtitle">Documento Institucional — Facilito</p>
+      </div>
+      <div class="doc-date"><p>Data: 22/04/2026</p><p style="margin-top:3px;">Ref.: #0003</p></div>
+    </div>
+
+    <p class="section-title first">1. Objeto e Aceite</p>
+    <p class="body-text">Os presentes Termos de Uso regulam o acesso e a utilização da plataforma digital Facilito, ambiente tecnológico destinado à conexão entre usuários interessados na contratação de serviços e prestadores autônomos, bem como à intermediação operacional do fluxo financeiro decorrente das transações realizadas no âmbito da plataforma.</p>
+    <p class="body-text">Ao utilizar a plataforma, o usuário declara que leu, compreendeu e concorda integralmente com as disposições destes Termos, obrigando-se ao seu fiel cumprimento.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">2. Natureza Jurídica da Plataforma</p>
+    <p class="body-text">A Facilito atua exclusivamente como plataforma tecnológica intermediadora, limitando-se a disponibilizar ambiente digital destinado à aproximação entre clientes e prestadores de serviços, sem integrar, sob qualquer hipótese, a relação contratual material estabelecida entre tais usuários.</p>
+    <p class="body-text">A plataforma não presta os serviços anunciados, não define unilateralmente preços, condições, prazos ou escopo das contratações e não assume obrigações próprias da execução dos serviços ofertados pelos prestadores cadastrados.</p>
+    <p class="body-text">Os prestadores atuam de forma autônoma, independente e sem qualquer vínculo societário, empregatício, associativo, representativo ou de subordinação com a Facilito, sendo integralmente responsáveis pelos serviços que disponibilizam e executam.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">3. Cadastro, Acesso e Responsabilidade do Usuário</p>
+    <p class="body-text">O acesso a determinadas funcionalidades da plataforma dependerá de cadastro prévio, hipótese em que o usuário deverá fornecer informações verdadeiras, completas, atualizadas e compatíveis com sua real identificação, responsabilizando-se, civil e administrativamente, por eventual falsidade, omissão ou desatualização.</p>
+    <p class="body-text">O usuário é exclusivamente responsável pela guarda, sigilo e utilização de suas credenciais de acesso, respondendo por toda atividade realizada em sua conta, ainda que por terceiros, quando decorrente de sua culpa, negligência ou compartilhamento indevido.</p>
+    <p class="body-text">A Facilito poderá, a seu exclusivo critério e sem necessidade de aviso prévio, adotar medidas de bloqueio, limitação, suspensão ou exclusão de contas quando identificar indícios de fraude, violação destes Termos, uso indevido da plataforma, risco à segurança do ambiente digital ou condutas incompatíveis com a boa-fé e com a finalidade do serviço.</p>
+  </div>
+  <span class="page-num">1</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 2 ======================== -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">4. Funcionamento da Plataforma</p>
+    <p class="body-text">A plataforma permite, entre outras funcionalidades, a divulgação de perfis profissionais, a oferta de serviços, a solicitação de orçamentos, a contratação de serviços, a troca de mensagens por meio de sistema interno de comunicação e o acompanhamento operacional das interações realizadas entre usuários.</p>
+    <p class="body-text">A Facilito poderá estabelecer diretrizes mínimas de uso e execução operacional, inclusive mecanismos de confirmação de início e conclusão do serviço, envio de registros visuais e demais procedimentos destinados à rastreabilidade, organização e segurança das transações, sem que tais medidas impliquem assunção da obrigação principal de prestar o serviço.</p>
+    <p class="body-text">As condições econômicas e negociais aplicáveis a cada contratação são informadas no ambiente da plataforma a partir dos dados inseridos pelos próprios prestadores, inexistindo ingerência negocial da Facilito além da viabilização tecnológica e operacional do ambiente digital.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">5. Validação de Prestadores e Sistema de Avaliação</p>
+    <p class="body-text">A Facilito poderá realizar verificação manual de informações cadastrais fornecidas pelos prestadores, com base em critérios internos de conformidade, consistência e segurança, sem que isso represente certificação técnica, chancela de idoneidade, homologação profissional ou garantia de qualidade dos serviços ofertados.</p>
+    <p class="body-text">A eventual validação cadastral possui caráter meramente informativo, preventivo e operacional, não afastando a responsabilidade exclusiva do prestador pelas informações disponibilizadas, pela regularidade de sua atividade e pela adequada execução dos serviços contratados.</p>
+    <p class="body-text">A plataforma poderá disponibilizar mecanismos de avaliação, reputação, classificação e destaque de perfis, inclusive mediante recursos pagos de maior visibilidade, preservando neutralidade na exibição dos prestadores e sem constituir recomendação personalizada ou indicação direta por parte da Facilito.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">6. Intermediação Financeira e Processamento de Pagamentos</p>
+    <p class="body-text">A Facilito realiza a intermediação operacional do fluxo financeiro das transações concluídas em seu ambiente digital, recebendo os valores pagos pelos clientes, procedendo à retenção das taxas aplicáveis e promovendo o repasse dos montantes devidos aos prestadores, conforme as regras de funcionamento da plataforma.</p>
+    <p class="body-text">O processamento dos pagamentos é executado por instituição de pagamento parceira integrada à plataforma, atualmente o Asaas, responsável pela infraestrutura tecnológica e financeira necessária à captura, segregação, liquidação e repasse dos valores, observadas as regras operacionais e de segurança do respectivo arranjo de pagamento.</p>
+    <p class="body-text">A Facilito não se qualifica como instituição financeira, banco, administradora de cartão ou custodiante autônoma de recursos, atuando exclusivamente como intermediadora da operação, não se responsabilizando por indisponibilidades, falhas sistêmicas, atrasos operacionais ou intercorrências imputáveis ao meio de pagamento utilizado.</p>
+    <p class="body-text">O repasse ao prestador ocorrerá após a confirmação da conclusão do serviço, conforme os critérios operacionais da plataforma e os prazos técnicos do parceiro responsável pelo processamento financeiro.</p>
+  </div>
+  <span class="page-num">2</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 3 ======================== -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">7. Taxas, Comissões e Remuneração da Plataforma</p>
+    <p class="body-text">Pela utilização da infraestrutura tecnológica, operacional e de intermediação disponibilizada, a Facilito poderá cobrar tarifas de transação, comissões sobre serviços intermediados, mensalidades de manutenção ou acesso a funcionalidades específicas, bem como valores relativos a recursos de visibilidade, destaque ou impulsionamento de perfis.</p>
+    <p class="body-text">Os valores incidentes, sua forma de cálculo, periodicidade e eventuais alterações serão informados de maneira prévia no ambiente da plataforma ou no momento da contratação da funcionalidade correspondente, reputando-se aceitos pelo usuário quando de sua utilização.</p>
+    <p class="body-text">A inadimplência de valores devidos à plataforma poderá ensejar suspensão de funcionalidades, retenção operacional de repasses, limitação de acesso ou demais medidas admissíveis à tutela do crédito, sem prejuízo da cobrança pelos meios legais cabíveis.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">8. Responsabilidade pela Execução dos Serviços</p>
+    <p class="body-text">A responsabilidade pela existência, qualidade, adequação, licitude, segurança, pontualidade, execução, resultado e conformidade dos serviços contratados é exclusiva do prestador responsável pela oferta correspondente, competindo-lhe responder diretamente perante o cliente por quaisquer vícios, falhas, danos, inadimplementos ou desconformidades.</p>
+    <p class="body-text">A Facilito não garante disponibilidade de prestadores, qualidade específica de serviços, satisfação subjetiva do usuário, resultado útil da contratação ou adimplemento integral das obrigações assumidas entre as partes, porquanto sua atuação se limita à disponibilização do ambiente tecnológico de intermediação e à facilitação operacional da comunicação e dos pagamentos.</p>
+    <p class="body-text">Sem prejuízo das hipóteses legalmente inderrogáveis, a Facilito não responderá por lucros cessantes, danos indiretos, prejuízos decorrentes de informações falsas inseridas por usuários, condutas ilícitas de terceiros, cancelamentos, atrasos, descumprimento contratual ou eventos externos fora de seu controle razoável.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">9. Mediação de Conflitos, Cancelamentos e Reembolso</p>
+    <p class="body-text">A Facilito poderá atuar, de forma facultativa e não vinculante, como facilitadora da comunicação entre cliente e prestador em situações de divergência ou relato de descumprimento, sem que isso implique assunção de dever de decidir a disputa, substituir a vontade das partes ou garantir solução específica.</p>
+    <p class="body-text">O cancelamento do serviço poderá ser realizado antes da marcação de conclusão, observadas as condições operacionais da plataforma, as circunstâncias do caso concreto e as regras eventualmente informadas no ato da contratação.</p>
+    <p class="body-text">Eventuais pedidos de estorno, devolução ou reembolso serão submetidos à análise individualizada da equipe responsável, mediante verificação de evidências, registros do sistema, mensagens e demais elementos pertinentes, não havendo direito automático à restituição nem política de arrependimento automático.</p>
+  </div>
+  <span class="page-num">3</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 4 ======================== -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">10. Condutas Proibidas e Medidas Sancionatórias</p>
+    <p class="body-text">É expressamente vedado ao usuário utilizar a plataforma para fins ilícitos, fraudulentos ou abusivos, bem como praticar spam, disseminar informações falsas, violar direitos autorais, utilizar dados de terceiros sem autorização, adotar condutas ofensivas, discriminatórias ou ameaçadoras, ou realizar qualquer ato que comprometa a segurança e o regular funcionamento do ambiente digital.</p>
+    <p class="body-text">Também constituem infrações sujeitas à apuração interna comportamentos inadequados comprovados por relatos e evidências idôneas, inclusive injúria, difamação, assédio, intimidação, ameaça ou qualquer forma de conduta abusiva associada ao uso da plataforma.</p>
+    <p class="body-text">Verificada a ocorrência de infração, poderão ser aplicadas medidas proporcionais à gravidade do caso, incluindo advertência, limitação de funcionalidades, suspensão temporária, bloqueio preventivo, exclusão definitiva da conta e adoção das providências legais cabíveis.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">11. Propriedade Intelectual</p>
+    <p class="body-text">Todos os direitos de propriedade intelectual relacionados à plataforma, incluindo software, interface, banco de dados, layout, identidade visual, marca, nome empresarial e demais elementos distintivos, pertencem exclusivamente à Facilito ou a terceiros que legitimamente os tenham licenciado.</p>
+    <p class="body-text">É vedada a reprodução, distribuição, engenharia reversa, extração indevida de dados, cópia, modificação, exploração econômica ou qualquer forma de utilização não autorizada dos ativos intelectuais da plataforma, sem prejuízo das medidas administrativas, cíveis e penais cabíveis.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">12. Proteção de Dados Pessoais</p>
+    <p class="body-text">O tratamento de dados pessoais realizado no contexto de utilização da plataforma observará a legislação aplicável, em especial a Lei nº 13.709/2018 (LGPD), e será disciplinado em instrumento próprio de Política de Privacidade, que integra o ecossistema normativo aplicável ao usuário.</p>
+    <p class="body-text">A utilização da plataforma pressupõe ciência de que determinados dados poderão ser tratados para fins de cadastro, autenticação, segurança, prevenção à fraude, processamento de pagamentos, cumprimento de obrigações legais e viabilização das funcionalidades ofertadas.</p>
+  </div>
+  <span class="page-num">4</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+<!-- ======================== PÁGINA 5 ======================== -->
+<div class="page">
+  <header class="header">
+    <div class="header-bar"><div class="header-bar-yellow"></div><div class="header-bar-blue"></div></div>
+    <div class="header-inner">
+      <div class="header-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none;color:#FFF;font-size:18pt;font-weight:900;">facilito</span>
+      </div>
+      <div class="header-info"><p><a href="mailto:joaquim@facilitoapp.com.br">joaquim@facilitoapp.com.br</a></p></div>
+    </div>
+  </header>
+  <div class="header-accent"></div>
+  <div class="content">
+    <p class="section-title first">13. Alterações dos Termos</p>
+    <p class="body-text">A Facilito poderá revisar, atualizar ou modificar estes Termos de Uso a qualquer tempo, visando adequação normativa, aprimoramento operacional, atualização de funcionalidades ou alteração do modelo de negócio.</p>
+    <p class="body-text">A versão vigente será disponibilizada na plataforma, incumbindo ao usuário consultá-la periodicamente. A continuidade de uso após a publicação das alterações será interpretada como concordância com a redação atualizada, na medida permitida pela legislação aplicável.</p>
+
+    <div class="divider"></div>
+
+    <p class="section-title">14. Disposições Gerais e Foro</p>
+    <p class="body-text">Estes Termos serão interpretados em conformidade com a legislação brasileira. A eventual tolerância quanto ao descumprimento de qualquer disposição não importará renúncia, novação ou alteração contratual.</p>
+    <p class="body-text">Na hipótese de nulidade, invalidade ou inexequibilidade parcial de qualquer cláusula, as demais disposições permanecerão válidas e eficazes, na máxima extensão admitida pelo ordenamento jurídico.</p>
+    <p class="body-text">Fica eleito o foro do domicílio do usuário, nos termos da legislação aplicável, para dirimir controvérsias oriundas destes Termos, ressalvadas as hipóteses de competência absoluta.</p>
+
+    <div class="signature-area">
+      <div>
+        <div class="sig-line"></div>
+        <p class="sig-name">Joaquim Fernandes</p>
+        <p class="sig-role">Fundador &nbsp;|&nbsp; Facilito</p>
+      </div>
+      <div class="sig-logo">
+        <img src="../assets/logo-branco.png" alt="Facilito" style="filter:invert(1);opacity:0.3;">
+      </div>
+    </div>
+  </div>
+  <span class="page-num">5</span>
+  <footer class="footer-wrap">
+    <div class="footer-bar"><div class="footer-bar-blue"></div><div class="footer-bar-yellow"></div></div>
+    <div class="footer"><p>Facilito <span class="footer-divider">|</span> Ecossistema digital de soluções do dia a dia</p><p>buscar.facilitoapp.com.br</p></div>
+  </footer>
+</div>
+
+</body>
+</html>
