@@ -92,6 +92,7 @@ function extractEmails(text) {
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'app.html')));
 
 app.use('/preview', express.static(__dirname));
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // Retorna lista de templates para o frontend
 app.get('/templates', (req, res) => {
@@ -126,8 +127,8 @@ app.get('/descadastrar', (req, res) => {
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: #060D28; color: #E8EDF8; font-family: Arial, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
     .card { background: #0C1535; border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 48px 40px; max-width: 480px; width: 100%; text-align: center; }
-    .logo { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 32px; }
-    .logo span { color: #F9CE62; }
+    .logo { margin-bottom: 32px; }
+    .logo img { height: 36px; }
     h1 { font-size: 22px; font-weight: 900; margin-bottom: 12px; }
     p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px; }
     form { display: flex; flex-direction: column; gap: 12px; }
@@ -141,7 +142,7 @@ app.get('/descadastrar', (req, res) => {
 </head>
 <body>
   <div class="card">
-    <div class="logo">facilito<span>.</span></div>
+    <div class="logo"><img src="/assets/logo-branco.png" alt="Facilito"></div>
     ${confirmed && alreadyUnsub ? `
       <h1>Já descadastrado</h1>
       <p>Este email já estava removido da nossa lista.</p>
