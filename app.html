@@ -658,7 +658,7 @@
       } else if (evt.sent === 0 && evt.skipped > 0) {
         showResult(id, 'error', 'Todos os emails desta lista estão descadastrados.');
       } else if (evt.sent === 0) {
-        showResult(id, 'error', 'Falha ao enviar. Verifique a API Key no servidor.');
+        showResult(id, 'error', `Falha ao enviar: ${evt.lastError || 'verifique a API Key no servidor.'}`);
       } else {
         showResult(id, 'partial', `${evt.sent} enviados, ${evt.failed} com erro.${skipMsg}`);
       }

@@ -225,7 +225,7 @@ app.post('/send', async (req, res) => {
 
   const resend   = createResend();
   const { subject } = TEMPLATES[template];
-  let sent = 0, failed = 0, skipped = 0;
+  let sent = 0, failed = 0, skipped = 0, lastError = '';
 
   // Filtra descadastrados
   const targets = emails.filter(e => !unsubscribed.has(e.toLowerCase()));
@@ -248,12 +248,13 @@ app.post('/send', async (req, res) => {
       send({ type: 'progress', email: to, status: 'ok', sent, failed, total: targets.length });
     } catch (e) {
       failed++;
+      lastError = e.message;
       send({ type: 'progress', email: to, status: 'error', error: e.message, sent, failed, total: targets.length });
     }
     await new Promise(r => setTimeout(r, 300));
   }
 
-  send({ type: 'done', sent, failed, skipped, total: targets.length });
+  send({ type: 'done', sent, failed, skipped, lastError, total: targets.length });
   res.end();
 });
 
