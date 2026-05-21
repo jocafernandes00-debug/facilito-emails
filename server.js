@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 const express    = require('express');
 const multer     = require('multer');
 const XLSX       = require('xlsx');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 const fs         = require('fs');
 const path       = require('path');
 
@@ -48,15 +48,8 @@ function loadHtml(template) {
     .replaceAll('{{UNSUBSCRIBE_URL}}', process.env.UNSUBSCRIBE_URL || '#');
 }
 
-function createTransport() {
-  return nodemailer.createTransport({
-    host: 'smtp.hostinger.com',
-    port: 465,
-    secure: true,
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
-    connectionTimeout: 15000,
-    socketTimeout: 20000,
-  });
+function createResend() {
+  return new Resend(process.env.RESEND_API_KEY);
 }
 
 function extractEmails(text) {
@@ -112,8 +105,8 @@ app.post('/send', async (req, res) => {
     return res.status(400).json({ error: 'Template inválido.' });
   if (!Array.isArray(emails) || emails.length === 0)
     return res.status(400).json({ error: 'Nenhum email informado.' });
-  if (!process.env.SMTP_USER || !process.env.SMTP_PASS)
-    return res.status(500).json({ error: 'Credenciais SMTP não configuradas.' });
+  if (!process.env.RESEND_API_KEY)
+    return res.status(500).json({ error: 'RESEND_API_KEY não configurada.' });
 
   // SSE para mostrar progresso em tempo real
   res.setHeader('Content-Type', 'text/event-stream');
@@ -122,8 +115,8 @@ app.post('/send', async (req, res) => {
 
   const send = (data) => res.write(`data: ${JSON.stringify(data)}\n\n`);
 
-  const transport = createTransport();
-  const html      = loadHtml(template);
+  const resend = createResend();
+  const html   = loadHtml(template);
   const { subject } = TEMPLATES[template];
   let sent = 0, failed = 0;
 
@@ -131,19 +124,21 @@ app.post('/send', async (req, res) => {
 
   for (const to of emails) {
     try {
-      await transport.sendMail({
-        from: `Facilito <${process.env.SMTP_USER}>`,
+      const { error } = await resend.emails.send({
+        from: 'Facilito <onboarding@resend.dev>',
+        reply_to: 'joaquim@facilitoapp.com.br',
         to,
         subject,
         html,
       });
+      if (error) throw new Error(error.message);
       sent++;
       send({ type: 'progress', email: to, status: 'ok', sent, failed, total: emails.length });
     } catch (e) {
       failed++;
       send({ type: 'progress', email: to, status: 'error', error: e.message, sent, failed, total: emails.length });
     }
-    await new Promise(r => setTimeout(r, 400));
+    await new Promise(r => setTimeout(r, 300));
   }
 
   send({ type: 'done', sent, failed, total: emails.length });
