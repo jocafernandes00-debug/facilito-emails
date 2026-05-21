@@ -4,244 +4,415 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Facilito — Disparos de Email</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      background: #060D28;
-      color: #E8EDF8;
-      font-family: Arial, Helvetica, sans-serif;
-      min-height: 100vh;
+    :root {
+      --navy:   #061685;
+      --blue:   #3662FF;
+      --yellow: #F9CE62;
+      --bg:     #060D28;
+      --surface:#0B1230;
+      --surface2:#0F1840;
+      --border: rgba(255,255,255,0.07);
+      --text:   #E8EDF8;
+      --muted:  rgba(232,237,248,0.45);
+      --faint:  rgba(232,237,248,0.18);
     }
 
-    /* ── Header ── */
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Urbanist', sans-serif;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(54,98,255,0.12) 0%, transparent 70%);
+    }
+
+    /* ── Header ────────────────────────────────────────────────────────────── */
     header {
-      background: #061685;
-      padding: 18px 32px;
+      background: rgba(6,22,133,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 0 40px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 3px solid #F9CE62;
-    }
-    header .logo {
-      font-size: 22px;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: -0.5px;
-    }
-    header .logo span { color: #F9CE62; }
-    header .subtitle {
-      font-size: 12px;
-      color: rgba(255,255,255,0.45);
-      letter-spacing: 2px;
-      text-transform: uppercase;
+      border-bottom: 1px solid rgba(249,206,98,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    /* ── Layout ── */
+    .header-left { display: flex; align-items: center; gap: 20px; }
+
+    header img.logo { height: 28px; }
+
+    .header-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    .header-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      opacity: 0.8;
+    }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .header-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 6px #22c55e;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── Layout ────────────────────────────────────────────────────────────── */
     main {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 40px 24px;
+      padding: 48px 32px 64px;
+    }
+
+    .page-title {
+      margin-bottom: 36px;
+    }
+
+    .page-title h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .page-title p {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 500;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
       gap: 24px;
     }
 
-    /* ── Card ── */
+    /* ── Card ────────────────────────────────────────────────────────────── */
     .card {
-      background: #0C1535;
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.12s; }
+    .card:nth-child(3) { animation-delay: 0.19s; }
+
+    .card-accent {
+      height: 3px;
+      width: 100%;
     }
 
     .card-header {
-      padding: 22px 24px 16px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid var(--border);
     }
 
     .badge {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       font-size: 10px;
       font-weight: 800;
       letter-spacing: 2px;
       text-transform: uppercase;
-      padding: 4px 12px;
+      padding: 5px 12px;
       border-radius: 50px;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
+    }
+
+    .badge::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
     }
 
     .card-title {
-      font-size: 18px;
-      font-weight: 900;
-      color: #fff;
-      margin-bottom: 4px;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.3px;
+      margin-bottom: 6px;
     }
 
     .card-desc {
       font-size: 13px;
-      color: rgba(255,255,255,0.4);
-      line-height: 1.5;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 500;
     }
 
     .preview-btn {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      margin-top: 12px;
+      margin-top: 16px;
       font-size: 12px;
       font-weight: 700;
-      color: rgba(255,255,255,0.5);
+      color: var(--faint);
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.12);
-      padding: 6px 14px;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 7px 14px;
       border-radius: 50px;
       transition: all 0.15s;
+      font-family: 'Urbanist', sans-serif;
+      letter-spacing: 0.3px;
     }
-    .preview-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
 
-    .card-body { padding: 20px 24px; flex: 1; display: flex; flex-direction: column; gap: 16px; }
+    .preview-btn:hover {
+      color: var(--text);
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.04);
+    }
 
-    /* ── Email input ── */
+    .card-body {
+      padding: 24px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    /* ── Labels & inputs ────────────────────────────────────────────────────── */
     label {
       display: block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: var(--faint);
       margin-bottom: 8px;
+      font-family: 'Urbanist', sans-serif;
     }
 
     textarea {
       width: 100%;
-      height: 110px;
-      background: #060D28;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      color: #E8EDF8;
+      height: 112px;
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      color: var(--text);
       font-size: 13px;
-      font-family: monospace;
-      padding: 12px;
+      font-family: 'Urbanist', monospace;
+      padding: 14px;
       resize: vertical;
       outline: none;
-      line-height: 1.6;
-      transition: border-color 0.15s;
+      line-height: 1.7;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-weight: 500;
     }
-    textarea:focus { border-color: rgba(54,98,255,0.6); }
-    textarea::placeholder { color: rgba(255,255,255,0.2); }
 
-    /* ── Upload ── */
+    textarea:focus {
+      border-color: rgba(54,98,255,0.5);
+      box-shadow: 0 0 0 3px rgba(54,98,255,0.08);
+    }
+
+    textarea::placeholder { color: rgba(255,255,255,0.15); }
+
+    /* ── Upload ────────────────────────────────────────────────────────────── */
     .upload-row {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .upload-btn {
       flex-shrink: 0;
-      background: rgba(255,255,255,0.05);
-      border: 1px dashed rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.04);
+      border: 1px dashed rgba(255,255,255,0.14);
+      color: var(--muted);
       font-size: 12px;
       font-weight: 700;
-      padding: 9px 16px;
-      border-radius: 8px;
+      padding: 9px 18px;
+      border-radius: 10px;
       cursor: pointer;
       transition: all 0.15s;
+      font-family: 'Urbanist', sans-serif;
+      letter-spacing: 0.3px;
     }
-    .upload-btn:hover { background: rgba(255,255,255,0.09); color: #fff; }
+
+    .upload-btn:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.22);
+      color: var(--text);
+    }
 
     .file-info {
       font-size: 12px;
-      color: rgba(255,255,255,0.35);
+      color: var(--faint);
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
+
     .file-info.loaded { color: #22c55e; font-weight: 700; }
 
-    .email-count {
-      font-size: 12px;
-      color: rgba(255,255,255,0.3);
-      text-align: right;
-    }
-    .email-count span { color: #F9CE62; font-weight: 800; }
-
-    /* ── Send button ── */
-    .send-btn {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 900;
-      color: #061685;
-      cursor: pointer;
-      transition: opacity 0.15s, transform 0.1s;
+    /* ── Counter row ────────────────────────────────────────────────────────── */
+    .counter-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-top: auto;
+      justify-content: space-between;
     }
-    .send-btn:hover:not(:disabled) { opacity: 0.88; }
-    .send-btn:active:not(:disabled) { transform: scale(0.98); }
-    .send-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-    /* ── Progress ── */
-    .progress-wrap {
-      display: none;
+    .email-count {
+      font-size: 13px;
+      color: var(--faint);
+      font-weight: 600;
     }
+
+    .email-count span {
+      color: var(--yellow);
+      font-weight: 800;
+    }
+
+    .clear-btn {
+      background: none;
+      border: none;
+      color: var(--faint);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      font-family: 'Urbanist', sans-serif;
+      letter-spacing: 0.3px;
+      transition: color 0.15s;
+    }
+
+    .clear-btn:hover { color: var(--muted); }
+
+    /* ── Progress ────────────────────────────────────────────────────────────── */
+    .progress-wrap { display: none; }
     .progress-wrap.active { display: block; }
 
     .progress-bar-bg {
-      background: rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.06);
       border-radius: 50px;
-      height: 6px;
+      height: 5px;
       overflow: hidden;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
+
     .progress-bar-fill {
       height: 100%;
       border-radius: 50px;
-      transition: width 0.3s;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       width: 0%;
     }
 
     .progress-text {
       font-size: 12px;
-      color: rgba(255,255,255,0.4);
+      color: var(--muted);
+      font-weight: 600;
     }
-    .progress-text .ok { color: #22c55e; font-weight: 700; }
+
+    .progress-text .ok   { color: #22c55e; font-weight: 700; }
     .progress-text .fail { color: #ef4444; font-weight: 700; }
 
-    /* ── Result ── */
+    /* ── Result ────────────────────────────────────────────────────────────── */
     .result {
       display: none;
-      padding: 14px 16px;
-      border-radius: 10px;
+      padding: 14px 18px;
+      border-radius: 12px;
       font-size: 13px;
       font-weight: 700;
       line-height: 1.5;
     }
-    .result.success { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
-    .result.error   { background: rgba(239,68,68,0.1); color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
-    .result.partial { background: rgba(249,206,98,0.1); color: #F9CE62; border: 1px solid rgba(249,206,98,0.2); }
 
-    /* ── Clear btn ── */
-    .clear-btn {
-      background: none;
+    .result.success { background: rgba(34,197,94,0.08);  color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+    .result.error   { background: rgba(239,68,68,0.08);  color: #ef4444; border: 1px solid rgba(239,68,68,0.2); }
+    .result.partial { background: rgba(249,206,98,0.08); color: var(--yellow); border: 1px solid rgba(249,206,98,0.2); }
+
+    /* ── Send button ────────────────────────────────────────────────────────── */
+    .send-btn {
+      width: 100%;
+      padding: 15px;
       border: none;
-      color: rgba(255,255,255,0.25);
-      font-size: 11px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 800;
+      color: #061685;
       cursor: pointer;
-      padding: 0;
-      text-decoration: underline;
+      transition: opacity 0.15s, transform 0.12s, box-shadow 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: auto;
+      font-family: 'Urbanist', sans-serif;
+      letter-spacing: 0.3px;
     }
-    .clear-btn:hover { color: rgba(255,255,255,0.55); }
+
+    .send-btn:hover:not(:disabled) {
+      opacity: 0.9;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    .send-btn:active:not(:disabled) { transform: scale(0.985); }
+    .send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    /* ── Loading state ────────────────────────────────────────────────────── */
+    .loading-card {
+      color: var(--faint);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 60px 0;
+      text-align: center;
+      grid-column: 1/-1;
+    }
 
     input[type="file"] { display: none; }
   </style>
@@ -249,24 +420,31 @@
 <body>
 
 <header>
-  <div>
-    <div class="logo">facilito<span>.</span></div>
-    <div class="subtitle">Plataforma de Disparos</div>
+  <div class="header-left">
+    <img src="/assets/logo-branco.png" alt="Facilito" class="logo">
+    <div class="header-divider"></div>
+    <span class="header-tag">Disparos</span>
   </div>
-  <div style="font-size:12px;color:rgba(255,255,255,0.3);">joaquim@facilitoapp.com.br</div>
+  <div class="header-right">
+    <div class="header-dot"></div>
+    Online
+  </div>
 </header>
 
 <main>
+  <div class="page-title">
+    <h1>Plataforma de Emails</h1>
+    <p>Selecione um template, importe sua lista e dispare.</p>
+  </div>
+
   <div class="grid" id="grid">
-    <div style="color:rgba(255,255,255,0.3);font-size:14px;">Carregando templates...</div>
+    <div class="loading-card">Carregando templates...</div>
   </div>
 </main>
 
 <script>
-  // ── Estado por template ────────────────────────────────────────────────
   const state = {};
 
-  // ── Helpers ───────────────────────────────────────────────────────────
   function parseEmailsFromText(text) {
     const re = /[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/g;
     return [...new Set((text.match(re) || []).map(e => e.toLowerCase()))];
@@ -278,7 +456,6 @@
     if (el) el.innerHTML = `<span>${s.emails.length}</span> email${s.emails.length !== 1 ? 's' : ''} na lista`;
   }
 
-  // ── Render cards ──────────────────────────────────────────────────────
   async function loadTemplates() {
     const res  = await fetch('/templates');
     const list = await res.json();
@@ -291,8 +468,9 @@
       const card = document.createElement('div');
       card.className = 'card';
       card.innerHTML = `
+        <div class="card-accent" style="background:${t.color};"></div>
         <div class="card-header">
-          <div class="badge" style="background:${t.color}22;color:${t.color};">${t.label}</div>
+          <div class="badge" style="background:${t.color}18;color:${t.color};">${t.label}</div>
           <div class="card-title">${t.label}</div>
           <div class="card-desc">${t.desc}</div>
           <a href="/preview/${t.preview}" target="_blank" class="preview-btn">
@@ -303,7 +481,7 @@
         <div class="card-body">
 
           <div>
-            <label>Emails (um por linha ou separados por vírgula)</label>
+            <label>Emails — um por linha ou separados por vírgula</label>
             <textarea id="textarea-${t.id}" placeholder="joao@email.com&#10;maria@email.com&#10;..."></textarea>
           </div>
 
@@ -318,9 +496,9 @@
             </div>
           </div>
 
-          <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div class="counter-row">
             <div class="email-count" id="count-${t.id}"><span>0</span> emails na lista</div>
-            <button class="clear-btn" onclick="clearEmails('${t.id}')">limpar lista</button>
+            <button class="clear-btn" onclick="clearEmails('${t.id}')">Limpar lista</button>
           </div>
 
           <div class="progress-wrap" id="progress-${t.id}">
@@ -346,14 +524,12 @@
 
       grid.appendChild(card);
 
-      // Listener textarea
       document.getElementById(`textarea-${t.id}`).addEventListener('input', () => {
-        const text   = document.getElementById(`textarea-${t.id}`).value;
+        const text = document.getElementById(`textarea-${t.id}`).value;
         state[t.id].emails = parseEmailsFromText(text);
         updateCount(t.id);
       });
 
-      // Listener file input
       document.getElementById(`file-${t.id}`).addEventListener('change', async (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -369,23 +545,17 @@
           const res  = await fetch('/parse', { method: 'POST', body: form });
           const data = await res.json();
 
-          if (data.error) {
-            infoEl.textContent = data.error;
-            return;
-          }
+          if (data.error) { infoEl.textContent = data.error; return; }
 
-          // Merge com emails já existentes no textarea
           const existing = state[t.id].emails;
           const merged   = [...new Set([...existing, ...data.emails])];
           state[t.id].emails = merged;
 
-          // Atualiza textarea com a lista completa
           document.getElementById(`textarea-${t.id}`).value = merged.join('\n');
-
           infoEl.textContent = `${data.count} emails importados de "${file.name}"`;
           infoEl.className = 'file-info loaded';
           updateCount(t.id);
-        } catch (err) {
+        } catch {
           infoEl.textContent = 'Erro ao processar arquivo.';
         }
 
@@ -411,11 +581,11 @@
       return;
     }
 
-    const btn       = document.getElementById(`btn-${id}`);
+    const btn        = document.getElementById(`btn-${id}`);
     const progressEl = document.getElementById(`progress-${id}`);
-    const resultEl  = document.getElementById(`result-${id}`);
-    const barEl     = document.getElementById(`bar-${id}`);
-    const textEl    = document.getElementById(`progress-text-${id}`);
+    const resultEl   = document.getElementById(`result-${id}`);
+    const barEl      = document.getElementById(`bar-${id}`);
+    const textEl     = document.getElementById(`progress-text-${id}`);
 
     btn.disabled = true;
     btn.textContent = 'Enviando...';
@@ -434,7 +604,6 @@
       const reader  = res.body.getReader();
       const decoder = new TextDecoder();
       let buffer = '';
-
       let receivedDone = false;
 
       while (true) {
@@ -459,9 +628,9 @@
         progressEl.classList.remove('active');
         btn.disabled = false;
         btn.textContent = 'Disparar emails';
-        showResult(id, 'error', 'Conexão encerrada inesperadamente. Verifique as credenciais SMTP no servidor.');
+        showResult(id, 'error', 'Conexão encerrada inesperadamente. Verifique a API Key no servidor.');
       }
-    } catch (err) {
+    } catch {
       btn.disabled = false;
       btn.textContent = 'Disparar emails';
       showResult(id, 'error', 'Erro de conexão. Verifique se o servidor está rodando.');
@@ -487,9 +656,9 @@
       if (evt.failed === 0 && evt.sent > 0) {
         showResult(id, 'success', `${evt.sent} email${evt.sent > 1 ? 's' : ''} enviado${evt.sent > 1 ? 's' : ''} com sucesso.${skipMsg}`);
       } else if (evt.sent === 0 && evt.skipped > 0) {
-        showResult(id, 'error', `Todos os emails desta lista estão descadastrados.`);
+        showResult(id, 'error', 'Todos os emails desta lista estão descadastrados.');
       } else if (evt.sent === 0) {
-        showResult(id, 'error', `Falha ao enviar. Verifique a API Key no servidor.`);
+        showResult(id, 'error', 'Falha ao enviar. Verifique a API Key no servidor.');
       } else {
         showResult(id, 'partial', `${evt.sent} enviados, ${evt.failed} com erro.${skipMsg}`);
       }
