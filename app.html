@@ -435,6 +435,8 @@
       const decoder = new TextDecoder();
       let buffer = '';
 
+      let receivedDone = false;
+
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
@@ -447,9 +449,17 @@
           if (!line.startsWith('data: ')) continue;
           try {
             const evt = JSON.parse(line.slice(6));
+            if (evt.type === 'done') receivedDone = true;
             handleEvent(id, evt, barEl, textEl, btn, progressEl, resultEl, emails.length);
           } catch (_) {}
         }
+      }
+
+      if (!receivedDone) {
+        progressEl.classList.remove('active');
+        btn.disabled = false;
+        btn.textContent = 'Disparar emails';
+        showResult(id, 'error', 'Conexão encerrada inesperadamente. Verifique as credenciais SMTP no servidor.');
       }
     } catch (err) {
       btn.disabled = false;
