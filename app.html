@@ -483,12 +483,15 @@
       btn.disabled = false;
       btn.textContent = 'Disparar emails';
 
-      if (evt.failed === 0) {
-        showResult(id, 'success', `${evt.sent} email${evt.sent > 1 ? 's' : ''} enviado${evt.sent > 1 ? 's' : ''} com sucesso.`);
+      const skipMsg = evt.skipped > 0 ? ` (${evt.skipped} descadastrado${evt.skipped > 1 ? 's' : ''} ignorado${evt.skipped > 1 ? 's' : ''})` : '';
+      if (evt.failed === 0 && evt.sent > 0) {
+        showResult(id, 'success', `${evt.sent} email${evt.sent > 1 ? 's' : ''} enviado${evt.sent > 1 ? 's' : ''} com sucesso.${skipMsg}`);
+      } else if (evt.sent === 0 && evt.skipped > 0) {
+        showResult(id, 'error', `Todos os emails desta lista estão descadastrados.`);
       } else if (evt.sent === 0) {
-        showResult(id, 'error', `Falha ao enviar. Verifique as credenciais SMTP.`);
+        showResult(id, 'error', `Falha ao enviar. Verifique a API Key no servidor.`);
       } else {
-        showResult(id, 'partial', `${evt.sent} enviados, ${evt.failed} com erro.`);
+        showResult(id, 'partial', `${evt.sent} enviados, ${evt.failed} com erro.${skipMsg}`);
       }
     }
   }

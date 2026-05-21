@@ -6,6 +6,7 @@ const express    = require('express');
 const multer     = require('multer');
 const XLSX       = require('xlsx');
 const { Resend } = require('resend');
+const crypto     = require('crypto');
 const fs         = require('fs');
 const path       = require('path');
 
@@ -13,6 +14,28 @@ const app    = express();
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 10 * 1024 * 1024 } });
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// ── Lista de descadastros (em memória + arquivo) ───────────────────────────
+const UNSUB_FILE = path.join(__dirname, 'unsubscribed.json');
+
+function loadUnsubs() {
+  try { return new Set(JSON.parse(fs.readFileSync(UNSUB_FILE, 'utf-8'))); }
+  catch { return new Set(); }
+}
+
+function saveUnsubs(set) {
+  try { fs.writeFileSync(UNSUB_FILE, JSON.stringify([...set])); } catch {}
+}
+
+const unsubscribed = loadUnsubs();
+
+// ── Token de descadastro (HMAC para evitar descadastros arbitrários) ───────
+const UNSUB_SECRET = process.env.UNSUB_SECRET || 'facilito-unsub-secret';
+
+function unsubToken(email) {
+  return crypto.createHmac('sha256', UNSUB_SECRET).update(email.toLowerCase()).digest('hex').slice(0, 16);
+}
 
 // ── Templates ──────────────────────────────────────────────────────────────
 const TEMPLATES = {
@@ -42,10 +65,17 @@ const TEMPLATES = {
   },
 };
 
-function loadHtml(template) {
+const BASE_URL = process.env.BASE_URL || 'https://facilito-emails.onrender.com';
+
+function loadHtml(template, recipientEmail) {
+  const token = recipientEmail ? unsubToken(recipientEmail) : '';
+  const unsubUrl = recipientEmail
+    ? `${BASE_URL}/descadastrar?email=${encodeURIComponent(recipientEmail)}&token=${token}`
+    : `${BASE_URL}/descadastrar`;
+
   return fs.readFileSync(path.join(__dirname, TEMPLATES[template].file), 'utf-8')
     .replaceAll('{{IMAGE_BASE_URL}}', process.env.IMAGE_BASE_URL || '')
-    .replaceAll('{{UNSUBSCRIBE_URL}}', process.env.UNSUBSCRIBE_URL || '#');
+    .replaceAll('{{UNSUBSCRIBE_URL}}', unsubUrl);
 }
 
 function createResend() {
@@ -69,6 +99,84 @@ app.get('/templates', (req, res) => {
     id, label: t.label, desc: t.desc, color: t.color, subject: t.subject, preview: t.preview,
   }));
   res.json(list);
+});
+
+// ── Descadastro ────────────────────────────────────────────────────────────
+
+app.get('/descadastrar', (req, res) => {
+  const { email, token } = req.query;
+
+  const alreadyUnsub = email && unsubscribed.has(email.toLowerCase());
+
+  // Token válido → descadastro automático via link
+  if (email && token && token === unsubToken(email) && !alreadyUnsub) {
+    unsubscribed.add(email.toLowerCase());
+    saveUnsubs(unsubscribed);
+  }
+
+  const confirmed = email && token && token === unsubToken(email);
+
+  res.send(`<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descadastro — Facilito</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #060D28; color: #E8EDF8; font-family: Arial, sans-serif; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .card { background: #0C1535; border: 1px solid rgba(255,255,255,0.07); border-radius: 20px; padding: 48px 40px; max-width: 480px; width: 100%; text-align: center; }
+    .logo { font-size: 24px; font-weight: 900; color: #fff; margin-bottom: 32px; }
+    .logo span { color: #F9CE62; }
+    h1 { font-size: 22px; font-weight: 900; margin-bottom: 12px; }
+    p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-bottom: 24px; }
+    form { display: flex; flex-direction: column; gap: 12px; }
+    input[type=email] { background: #060D28; border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; color: #E8EDF8; font-size: 14px; padding: 14px 16px; outline: none; transition: border-color 0.15s; }
+    input[type=email]:focus { border-color: rgba(54,98,255,0.6); }
+    button { background: #3662FF; border: none; border-radius: 10px; color: #fff; font-size: 14px; font-weight: 900; padding: 14px; cursor: pointer; transition: opacity 0.15s; }
+    button:hover { opacity: 0.85; }
+    .success { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); border-radius: 12px; color: #22c55e; font-size: 14px; font-weight: 700; padding: 16px; }
+    .already { background: rgba(249,206,98,0.1); border: 1px solid rgba(249,206,98,0.2); border-radius: 12px; color: #F9CE62; font-size: 14px; font-weight: 700; padding: 16px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">facilito<span>.</span></div>
+    ${confirmed && alreadyUnsub ? `
+      <h1>Já descadastrado</h1>
+      <p>Este email já estava removido da nossa lista.</p>
+      <div class="already">${email}</div>
+    ` : confirmed ? `
+      <h1>Descadastro confirmado</h1>
+      <p>Você não receberá mais emails do Facilito.<br>Se mudar de ideia, entre em contato conosco.</p>
+      <div class="success">${email}</div>
+    ` : `
+      <h1>Descadastrar</h1>
+      <p>Digite seu email abaixo para ser removido da nossa lista de envios.</p>
+      <form method="POST" action="/descadastrar">
+        <input type="email" name="email" placeholder="seu@email.com" value="${email || ''}" required>
+        <button type="submit">Confirmar descadastro</button>
+      </form>
+    `}
+  </div>
+</body>
+</html>`);
+});
+
+app.post('/descadastrar', (req, res) => {
+  const email = (req.body.email || '').toLowerCase().trim();
+  if (!email || !email.includes('@')) {
+    return res.redirect('/descadastrar?erro=email-invalido');
+  }
+  unsubscribed.add(email);
+  saveUnsubs(unsubscribed);
+  const token = unsubToken(email);
+  res.redirect(`/descadastrar?email=${encodeURIComponent(email)}&token=${token}`);
+});
+
+// Lista de descadastrados (acesso admin)
+app.get('/admin/descadastrados', (req, res) => {
+  res.json({ total: unsubscribed.size, emails: [...unsubscribed].sort() });
 });
 
 // Parse arquivo CSV / XLSX e retorna array de emails
@@ -108,21 +216,24 @@ app.post('/send', async (req, res) => {
   if (!process.env.RESEND_API_KEY)
     return res.status(500).json({ error: 'RESEND_API_KEY não configurada.' });
 
-  // SSE para mostrar progresso em tempo real
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
 
   const send = (data) => res.write(`data: ${JSON.stringify(data)}\n\n`);
 
-  const resend = createResend();
-  const html   = loadHtml(template);
+  const resend   = createResend();
   const { subject } = TEMPLATES[template];
-  let sent = 0, failed = 0;
+  let sent = 0, failed = 0, skipped = 0;
 
-  send({ type: 'start', total: emails.length });
+  // Filtra descadastrados
+  const targets = emails.filter(e => !unsubscribed.has(e.toLowerCase()));
+  skipped = emails.length - targets.length;
 
-  for (const to of emails) {
+  send({ type: 'start', total: targets.length, skipped });
+
+  for (const to of targets) {
+    const html = loadHtml(template, to);
     try {
       const { error } = await resend.emails.send({
         from: 'Facilito <onboarding@resend.dev>',
@@ -133,15 +244,15 @@ app.post('/send', async (req, res) => {
       });
       if (error) throw new Error(error.message);
       sent++;
-      send({ type: 'progress', email: to, status: 'ok', sent, failed, total: emails.length });
+      send({ type: 'progress', email: to, status: 'ok', sent, failed, total: targets.length });
     } catch (e) {
       failed++;
-      send({ type: 'progress', email: to, status: 'error', error: e.message, sent, failed, total: emails.length });
+      send({ type: 'progress', email: to, status: 'error', error: e.message, sent, failed, total: targets.length });
     }
     await new Promise(r => setTimeout(r, 300));
   }
 
-  send({ type: 'done', sent, failed, total: emails.length });
+  send({ type: 'done', sent, failed, skipped, total: targets.length });
   res.end();
 });
 
